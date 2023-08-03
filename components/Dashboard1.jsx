@@ -66,29 +66,6 @@ const assignments = [
   },
   // More assignments...
 ];
-const whoToFollow = [
-  {
-    name: "Leonard Krasner",
-    handle: "leonardkrasner",
-    href: "#",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  // More people...
-];
-const trendingPosts = [
-  {
-    id: 1,
-    user: {
-      name: "Floyd Miles",
-      imageUrl:
-        "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    body: "What books do you have on your bookshelf just to look smarter than you actually are?",
-    comments: 291,
-  },
-  // More posts...
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -198,7 +175,7 @@ export default function Dashboard1() {
                           <span className="absolute -inset-1.5" />
                           <span className="sr-only">Open user menu</span>
                           <img
-                            className="h-8 w-8 rounded-full"
+                            className="h-8 w-8 rounded-md"
                             src={user.imageUrl}
                             alt=""
                           />
