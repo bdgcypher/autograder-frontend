@@ -7,8 +7,8 @@ import { IoMdCheckmark, IoIosArrowDown } from "react-icons/io";
 import { BiDotsVerticalRounded, BiEditAlt } from "react-icons/bi";
 import { LiaClipboardListSolid } from "react-icons/lia";
 import AssignmentDescription from "./AssignmentDescription";
-import Submissions from "../Submissions";
-import Rubric from "../Rubric";
+import Submissions from "./Submissions";
+import Rubric from "./Rubric";
 
 export default function Assignment() {
 
