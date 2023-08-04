@@ -124,7 +124,7 @@ export default function Submissions() {
                       ) : person.status === "In progress" ? (
                         <>
                           <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                            <span className="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-yellow-600/20">
+                            <span className="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
                               {person.status}
                             </span>
                           </td>
