@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import Dashboard1 from '@/components/Dashboard1'
+import Dashboard from '@/components/Dashboard/Dashboard'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -9,7 +9,7 @@ export default function Home() {
     <main
       className={`flex min-h-screen h-full p-4 flex-col items-center justify-between bg-slate-50 ${inter.className}`}
     >
-      <Dashboard1 />
+      <Dashboard />
     </main>
   )
 }
