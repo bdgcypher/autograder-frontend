@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { Fragment } from "react";
 import { Menu, Transition, Listbox } from "@headlessui/react";

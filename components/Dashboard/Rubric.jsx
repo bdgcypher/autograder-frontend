@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import react from "react";
 import { UserCircleIcon } from "@heroicons/react/20/solid";
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Fragment } from "react";
 import { Menu, Popover, Transition, Listbox } from "@headlessui/react";
