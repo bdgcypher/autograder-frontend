@@ -4,18 +4,38 @@ import { UserCircleIcon } from "@heroicons/react/20/solid";
 const criteria = [
   {
     name: "Big O",
-    score: 3,
-    assessment: "assessment here",
+    points: [1, 3, 5],
+    description: [
+      "did nothing",
+      "tried really really really hard",
+      "Worked their butts off and deserve an A++",
+    ],
+    pointsTotal: "5",
   },
   {
-    name: "Validity",
-    score: 1,
-    assessment: "assessment here",
+    name: "Versatility",
+    points: [1, 3, 5],
+    description: [
+      "did nothing",
+      "tried really really really hard",
+      "Worked their butts off and deserve an A++",
+    ],
+    pointsTotal: "5",
+  },
+  {
+    name: "Organization",
+    points: [1, 3, 5],
+    description: [
+      "did nothing",
+      "tried really really really hard",
+      "Worked their butts off and deserve an A++",
+    ],
+    pointsTotal: "5",
   },
   // More criteria...
 ];
 
-export default function Rubrik() {
+export default function Rubric() {
   return (
     <div className="mt-10 p-4 bg-white rounded-xl shadow-md">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -23,8 +43,8 @@ export default function Rubrik() {
           <div className="sm:flex-auto">
             <div className="flex flex-row">
               <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
-              <h1 className="text-base font-semibold leading-6 text-gray-900">
-                Rubrik
+              <h1 className="text-lg font-semibold leading-6 text-gray-900">
+                Rubric
               </h1>
             </div>
             <p className="mt-2 text-sm text-gray-700">
@@ -44,33 +64,40 @@ export default function Rubrik() {
                             Name
                           </th>
                           <th
-                            scope="col"
-                            className="px-4 py-3.5 text-center text-sm font-semibold bg-sky-100 text-gray-900"
+                            scope="colgroup"
+                            colspan="3"
+                            className="col-span-3 px-4 py-3.5 text-center text-sm font-semibold bg-sky-100 text-gray-900"
                           >
                             Ratings
                           </th>
                           <th
                             scope="col"
-                            className="py-3.5 pl-4 pr-4 text-center text-sm font-semibold bg-rose-200 text-gray-900 sm:pr-0 rounded-r"
+                            className="py-3.5 pl-0 pr-0 text-center text-sm font-semibold bg-rose-200 text-gray-900 rounded-r"
                           >
                             Points
                           </th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-200 bg-white">
+                      <tbody className="divide-y divide-gray-300 bg-white">
                         {criteria.map((criterion) => (
                           <tr
                             key={criterion.id}
-                            className="divide-x divide-gray-200"
+                            className="divide-x divide-gray-300"
                           >
-                            <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                            <td className="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 bg-green-200 ">
                               {criterion.name}
                             </td>
-                            <td className="whitespace-nowrap p-4 text-sm text-gray-500">
-                              {criterion.assessment}
-                            </td>
-                            <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
-                              {criterion.score}
+                            {criterion.points
+                              ? criterion.points.map((points) => (
+                                  <td className="p-4 text-sm text-gray-500">
+                                    + {points}
+                                    <br />
+                                    {/* {criterion.description} */}
+                                  </td>
+                                ))
+                              : null}
+                            <td className="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
+                              {criterion.pointsTotal}
                             </td>
                           </tr>
                         ))}

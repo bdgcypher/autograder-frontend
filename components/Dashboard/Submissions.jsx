@@ -28,7 +28,7 @@ export default function Submissions() {
           <div className="sm:flex-auto">
             <div className="flex flex-row">
                 <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
-                <h1 className="text-base font-semibold leading-6 text-gray-900">
+                <h1 className="text-lg font-semibold leading-6 text-gray-900">
               Submissions
             </h1>
             </div>

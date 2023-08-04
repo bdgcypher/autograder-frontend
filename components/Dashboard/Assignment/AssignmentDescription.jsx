@@ -10,17 +10,17 @@ export default function AssignmentDescription() {
   const assignments = [
     {
       id: "81614",
-      points: "50",
+      points: "15",
       header: {
         name: "Green Tech Paper",
         href: "#",
       },
       href: "#",
       title: "Green Tech Paper",
-      body: `
-            <p>The objective of this assignment is to deepen your understanding of renewable energy technologies and their potential to address the challenges of climate change and sustainable development.</p>
-            <p>You will be required to research and write a comprehensive research paper on a specific renewable energy technology of your choice.</p>
-          `,
+      body: `<p>Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.\n\nFor example, 
+      [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1, 1, 5] should return 10, since we pick 5 and 5.
+      \n\nFollow-up: Can you do this in O(N) time and constant space?\n\nFor your submission, 
+      create a python function which accepts a single list of integers and/or floats.</p>`,
     },
     // {
     //   id: "81613",
@@ -78,6 +78,20 @@ export default function AssignmentDescription() {
                         <p className="text-lg text-gray-900 font-bold">
                           {assignment.title}
                         </p>
+                        <div className="flex space-x-6">
+                          <span className="inline-flex items-center text-sm">
+                            <button
+                              type="button"
+                              className="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
+                            >
+                              <span className="flex flex-row font-medium text-gray-700">
+                                <LiaClipboardListSolid className="ml-2 font-bold text-gray-700 text-xl" />
+                                - {assignment.points} Points
+                              </span>
+                              <span className="sr-only">likes</span>
+                            </button>
+                          </span>
+                        </div>
                       </div>
                       <div className="flex flex-shrink-0 self-center">
                         <Menu
@@ -160,21 +174,6 @@ export default function AssignmentDescription() {
                     </div>
                   </div>
                   <div className="mt-6 flex justify-between space-x-8">
-                    <div className="flex space-x-6">
-                      <span className="inline-flex items-center text-sm">
-                        <button
-                          type="button"
-                          className="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
-                        >
-                          <span className="flex flex-row font-medium text-gray-900">
-                            Possible Points
-                            <LiaClipboardListSolid className="ml-2 font-bold text-gray-900 text-xl" />
-                            - {assignment.points}
-                          </span>
-                          <span className="sr-only">likes</span>
-                        </button>
-                      </span>
-                    </div>
                     <div className="hidden text-sm p-2 rounded text-gray-600 border border-gray-600 hover:text-gray-100 hover:bg-sky-700">
                       <span className="inline-flex items-center text-sm">
                         <button type="button" className="inline-flex space-x-2">
