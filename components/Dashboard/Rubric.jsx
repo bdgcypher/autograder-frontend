@@ -66,7 +66,7 @@ export default function Rubric() {
                           </th>
                           <th
                             scope="colgroup"
-                            colspan="3"
+                            colSpan="3"
                             className="col-span-3 px-4 py-3.5 text-center text-sm font-semibold bg-sky-100 text-gray-900"
                           >
                             Ratings
@@ -82,22 +82,22 @@ export default function Rubric() {
                       <tbody className="divide-y divide-gray-300 bg-white">
                         {criteria.map((criterion) => (
                           <tr
-                            key={criterion.id}
+                          key={crypto.randomUUID}
                             className="divide-x divide-gray-300"
                           >
-                            <td className="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 bg-green-200 ">
+                            <td key={crypto.randomUUID} className="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 bg-green-200 ">
                               {criterion.name}
                             </td>
                             {criterion.points
                               ? criterion.points.map((points) => (
-                                  <td className="p-4 text-sm text-gray-500">
+                                  <td key={crypto.randomUUID} className="p-4 text-sm text-gray-500">
                                     + {points}
                                     <br />
-                                    {/* {criterion.description} */}
+                                    {criterion.description[points.id]}
                                   </td>
                                 ))
                               : null}
-                            <td className="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
+                            <td key={crypto.randomUUID} className="py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
                               {criterion.pointsTotal}
                             </td>
                           </tr>
