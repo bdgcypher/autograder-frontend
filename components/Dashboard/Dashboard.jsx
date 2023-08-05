@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import React, { useState } from "react";
+import jsonData from "/data.json";
 import { FiSettings } from "react-icons/fi";
 import { RiDashboard2Fill } from "react-icons/ri";
 import { MdOutlineDiamond, MdOutlinePeopleAlt } from "react-icons/md";
@@ -18,6 +19,8 @@ function classNames(...classes) {
 
 export default function Dashboard() {
 
+  let data = jsonData
+
   return (
     <>
       <div className="min-h-full">
@@ -27,7 +30,7 @@ export default function Dashboard() {
           <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
             <Sidebar />
 
-            <Assignment />
+            <Assignment dataArray={data} />
           </div>
         </div>
       </div>

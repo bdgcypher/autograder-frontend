@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import react from "react";
+import react, { useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/20/solid";
 
 const people = [
@@ -7,6 +7,7 @@ const people = [
     name: "Lindsay Walton",
     email: "lindsay.walton@example.com",
     submittedOn: "04/27/2023 - 10:23am",
+    submission: "def largest_adjacent_sum(numbers):\n    \"\"\"\n    Finds the largest sum of non-adjacent numbers in a given list of integers.\n\n    Args:\n       numbers (list): A list of integers.\n\n    Returns:\n       int: The largest sum of non-adjacent numbers.\n    \"\"\"\n\n    if not numbers:\n        return 0\n\n    length = len(numbers)\n    if length == 1:\n        return numbers[0]\n\n    # Initialize two variables to track the maximum sum at each step\n    prev_max = max(0, numbers[0])\n    curr_max = max(prev_max, numbers[1])\n\n    # Iterate through the list starting from the third element\n    for i in range(2, length):\n        # Calculate the maximum sum up to the current element\n        temp = curr_max\n        curr_max = max(prev_max + numbers[i], curr_max)\n        prev_max = temp\n\n    return curr_max\n",
     status: "In progress",
     image:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
@@ -15,25 +16,28 @@ const people = [
     name: "Jordan Grimsley",
     email: "J0r_de_man13@example.com",
     submittedOn: "04/262023 - 5:56pm",
+    submission: "def max_sum_non_adjacent(nums):\n    # Handle edge cases\n    if len(nums) == 0:\n        return 0\n    elif len(nums) == 1:\n        return max(nums[0], 0)\n\n    prev_prev_sum = max(nums[0], 0)\n    prev_sum = max(nums[0], nums[1], 0)\n\n    for i in range(2, len(nums)):\n        current_sum = max(prev_sum, prev_prev_sum + nums[i], 0)\n        prev_prev_sum = prev_sum\n        prev_sum = current_sum\n\n    return prev_sum\nprint(max_sum_non_adjacent([2, 4, 6, 2, 5]))  # Output: 13\nprint(max_sum_non_adjacent([5, 1, 1, 5]))     # Output: 10\nprint(max_sum_non_adjacent([-1, -2, -3, -4])) # Output: 0\nprint(max_sum_non_adjacent([1, 2, 3, 4, 5]))  # Output: 9\n",
     status: "Graded",
     image: "",
   },
   // More people...
 ];
 
-export default function Submissions() {
+export default function Submissions({ setOpen, setPerson, setSubmission }) {
+
+
   return (
     <div className="mt-10 p-4 bg-white rounded-xl shadow-md">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
             <div className="flex flex-row">
-                <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
-                <h1 className="text-lg font-semibold leading-6 text-gray-900">
-              Submissions
-            </h1>
+              <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
+              <h1 className="text-lg font-semibold leading-6 text-gray-900">
+                Submissions
+              </h1>
             </div>
-            
+
             <p className="mt-2 text-sm text-gray-700">
               A list of all the students in your class who have submitted this
               assignment.
@@ -110,7 +114,9 @@ export default function Submissions() {
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                        <div className="text-gray-500">{person.submittedOn}</div>
+                        <div className="text-gray-500">
+                          {person.submittedOn}
+                        </div>
                       </td>
 
                       {person.status === "Graded" ? (
@@ -131,9 +137,16 @@ export default function Submissions() {
                         </>
                       ) : null}
                       <td className="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                        <a href="#" className="text-sky-600 hover:text-sky-900">
+                        <div
+                          onClick={() => {
+                            setOpen(true);
+                            setPerson(person.name);
+                            setSubmission(person.submission)
+                          }}
+                          className="text-sky-600 hover:text-sky-900 cursor-pointer"
+                        >
                           View<span className="sr-only">, {person.name}</span>
-                        </a>
+                        </div>
                       </td>
                     </tr>
                   ))}
