@@ -4,8 +4,13 @@ import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoMdClose } from "react-icons/io";
+import { PiCalendarCheckDuotone } from "react-icons/pi";
+import SubmissionDropdown from "./SubmissionDropdown";
 
-export default function ViewSubmission({ open, setOpen, person, submission }) {
+export default function ViewSubmission({ open, setOpen, submissions, submission, setSubmission }) {
+
+  console.log(submissions);
+
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -33,14 +38,14 @@ export default function ViewSubmission({ open, setOpen, person, submission }) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative w-screen lg:w-3/4 my-0 md:my-10 bg-white rounded-md text-left shadow-xl transform transition-all">
-                  <div className="relative min-h-screen py-14 mx-auto rounded-md bg-white">
+                <Dialog.Panel className="relative h-screen-90 w-11/12 lg:w-5/6 my-0 md:my-10 bg-white rounded-md text-left shadow-xl transform transition-all">
+                  <div className="relative py-14 mx-auto rounded-md bg-white">
                     <div className="flex flex-row">
                       <div className="absolute top-6 left-10">
                         <div className="flex flex-row">
                           <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
                           <h1 className="mb-8 text-lg font-semibold leading-6 text-gray-900">
-                            Assignment 1 - {person.name}
+                            Assignment 1 - {submission.name}
                           </h1>
                         </div>
                       </div>
@@ -50,7 +55,7 @@ export default function ViewSubmission({ open, setOpen, person, submission }) {
                       />
                     </div>
                     <hr className="mt-6 border-gray-200" />
-                    <div className="flex flex-col px-0 lg:px-20">
+                    <div className="flex flex-col px-0">
                       <main className="">
                         <div className="xl:pr-96">
                           <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
@@ -61,14 +66,22 @@ export default function ViewSubmission({ open, setOpen, person, submission }) {
                               style={docco}
                               className="rounded"
                             >
-                              {submission}
+                              {submission.submission}
                             </SyntaxHighlighter>
                           </div>
                         </div>
                       </main>
 
-                      <aside className="fixed mt-20 inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block">
-                        {/* Secondary column (hidden on smaller screens) */}
+                      {/* Secondary column (hidden on smaller screens) */}
+
+                      <aside className="fixed mt-20 inset-y-0 right-0 hidden w-96 border-l border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block overflow-y-scroll">
+                        <SubmissionDropdown submission={submission} setSubmission={setSubmission} submissions={submissions} />
+                        <div className="flex flex-row mt-4 text-sm text-gray-900">
+                          <div className="mr-2 p-2 bg-sky-100 rounded-full">
+                            <PiCalendarCheckDuotone className="text-sky-900 text-xl bg-sky-100" />
+                          </div>
+                          <p className="mt-2 font-semibold">Submitted {submission.submittedOn}</p>
+                        </div>
                       </aside>
                     </div>
                   </div>

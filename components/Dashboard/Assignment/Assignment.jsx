@@ -112,8 +112,8 @@ export default function Assignment({ dataArray }) {
 
         <Submissions
           setOpen={setOpen}
-          setPerson={setPerson}
           setSubmission={setSubmission}
+          submissions={dataArray.submissions}
         />
 
         {/* View Submission popup */}
@@ -121,8 +121,9 @@ export default function Assignment({ dataArray }) {
         <ViewSubmission
           open={open}
           setOpen={setOpen}
-          person={person}
+          submissions={dataArray.submissions}
           submission={submission}
+          setSubmission={setSubmission}
         />
       </main>
     </>

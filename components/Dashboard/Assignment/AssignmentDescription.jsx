@@ -8,12 +8,6 @@ import { BiDotsVerticalRounded, BiEditAlt } from "react-icons/bi";
 import { LiaClipboardListSolid } from "react-icons/lia";
 
 export default function AssignmentDescription({ assignment }) {
-  const assignments = [{
-      id: "1",
-      title: "Green Tech Paper",
-      totalPoints: "15",
-      body: assignment,
-    }];
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -25,7 +19,7 @@ export default function AssignmentDescription({ assignment }) {
         <div className="mt-4">
           <h1 className="sr-only">Assignments</h1>
           <ul role="list" className="space-y-4">
-            {assignments.map((assignment) => (
+            {assignment.map((assignment) => (
               <li
                 key={assignment.id}
                 className="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6"
