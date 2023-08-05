@@ -18,13 +18,13 @@ import { UserCircleIcon } from "@heroicons/react/20/solid";
 //     email: "J0r_de_man13@example.com",
 //     submittedOn: "04/26/2023 - 5:56pm",
 //     submission: "def max_sum_non_adjacent(nums):\n    # Handle edge cases\n    if len(nums) == 0:\n        return 0\n    elif len(nums) == 1:\n        return max(nums[0], 0)\n\n    prev_prev_sum = max(nums[0], 0)\n    prev_sum = max(nums[0], nums[1], 0)\n\n    for i in range(2, len(nums)):\n        current_sum = max(prev_sum, prev_prev_sum + nums[i], 0)\n        prev_prev_sum = prev_sum\n        prev_sum = current_sum\n\n    return prev_sum\nprint(max_sum_non_adjacent([2, 4, 6, 2, 5]))  # Output: 13\nprint(max_sum_non_adjacent([5, 1, 1, 5]))     # Output: 10\nprint(max_sum_non_adjacent([-1, -2, -3, -4])) # Output: 0\nprint(max_sum_non_adjacent([1, 2, 3, 4, 5]))  # Output: 9\n",
-//     status: "Graded",
+//     status: "graded",
 //     image: "",
 //   },
 //   // More people...
 // ];
 
-export default function Submissions({ setOpen, setSubmission, submissions }) {
+export default function Submissions({ setOpen, setSubmission, submissions, setGrade, rubricArray, setCurrentCriterion }) {
 
 
   return (
@@ -142,6 +142,8 @@ export default function Submissions({ setOpen, setSubmission, submissions }) {
                           onClick={() => {
                             setOpen(true);
                             setSubmission(submission);
+                            setGrade(submission.grade);
+                            setCurrentCriterion(rubricArray[1].levels)
                           }}
                           className="text-sky-600 hover:text-sky-900 cursor-pointer"
                         >

@@ -8,12 +8,13 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function SubmissionDropdown({ submissions, submission, setSubmission }) {
+export default function SubmissionDropdown({ submissions, submission, setSubmission, setGrade}) {
   const [selected, setSelected] = useState(submission);
 
   const handleChange = (e) => {
     setSelected(e);
     setSubmission(e);
+    setGrade(e.grade);
   }
 
 

@@ -76,7 +76,7 @@ export default function Navbar() {
               </div>
               <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
                 <div className="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
-                  <div className="ml-24 md:w-5/6 lg:w-full">
+                  <div className="ml-4 md:ml-24 w-10 md:w-5/6 lg:w-full">
                     <label htmlFor="search" className="sr-only">
                       Search
                     </label>
@@ -90,7 +90,7 @@ export default function Navbar() {
                       <input
                         id="search"
                         name="search"
-                        className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-700 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-1 md:pr-3 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-700 sm:text-sm sm:leading-6"
                         placeholder="Search"
                         type="search"
                       />

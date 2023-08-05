@@ -6,11 +6,20 @@ import { Dialog, Transition } from "@headlessui/react";
 import { IoMdClose } from "react-icons/io";
 import { PiCalendarCheckDuotone } from "react-icons/pi";
 import SubmissionDropdown from "./SubmissionDropdown";
+import Grade from "./Grade";
 
-export default function ViewSubmission({ open, setOpen, submissions, submission, setSubmission }) {
-
-  console.log(submissions);
-
+export default function ViewSubmission({
+  open,
+  setOpen,
+  submissions,
+  submission,
+  setSubmission,
+  grade,
+  setGrade,
+  rubricArray,
+  currentCriterion,
+  setCurrentCriterion
+}) {
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -61,6 +70,8 @@ export default function ViewSubmission({ open, setOpen, submissions, submission,
                           <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
                             {/* Main area */}
 
+                            {/* View the selected submission */}
+
                             <SyntaxHighlighter
                               language="python"
                               style={docco}
@@ -74,14 +85,26 @@ export default function ViewSubmission({ open, setOpen, submissions, submission,
 
                       {/* Secondary column (hidden on smaller screens) */}
 
-                      <aside className="fixed mt-20 inset-y-0 right-0 hidden w-96 border-l border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block overflow-y-scroll">
-                        <SubmissionDropdown submission={submission} setSubmission={setSubmission} submissions={submissions} />
+                      <aside className="fixed mt-20 inset-y-0 right-0 hidden w-96 border-l border-gray-200 px-4 py-6 xl:block overflow-y-scroll">
+                        {/* Select which submission you are viewing with the dropdown */}
+                        <SubmissionDropdown
+                          submission={submission}
+                          setSubmission={setSubmission}
+                          submissions={submissions}
+                          setGrade={setGrade}
+                        />
                         <div className="flex flex-row mt-4 text-sm text-gray-900">
                           <div className="mr-2 p-2 bg-sky-100 rounded-full">
                             <PiCalendarCheckDuotone className="text-sky-900 text-xl bg-sky-100" />
                           </div>
-                          <p className="mt-2 font-semibold">Submitted {submission.submittedOn}</p>
+                          <p className="mt-2 font-semibold">
+                            Submitted {submission.submittedOn}
+                          </p>
                         </div>
+
+                        {/* Grade of submission */}
+                        <Grade grade={grade} setGrade={setGrade} rubricArray={rubricArray} currentCriterion={currentCriterion} setCurrentCriterion={setCurrentCriterion} />
+
                       </aside>
                     </div>
                   </div>

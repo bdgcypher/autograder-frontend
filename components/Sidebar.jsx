@@ -15,29 +15,23 @@ function classNames(...classes) {
 }
 
 export default function Sidebar() {
-  const user = {
-    name: "Chelsea Hagon",
-    email: "chelsea.hagon@example.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  };
   const navigation = [
     { name: "Dashboard", href: "#", icon: RiDashboard2Fill, current: true },
-    { name: "Product", href: "#", icon: MdOutlineDiamond, current: false },
-    { name: "Analytics", href: "#", icon: BiPieChartAlt2, current: false },
-    { name: "Customers", href: "#", icon: MdOutlinePeopleAlt, current: false },
-    {
-      name: "Invoice",
-      href: "#",
-      icon: LiaFileInvoiceDollarSolid,
-      current: false,
-    },
+    // { name: "Product", href: "#", icon: MdOutlineDiamond, current: false },
+    // { name: "Analytics", href: "#", icon: BiPieChartAlt2, current: false },
+    // { name: "Customers", href: "#", icon: MdOutlinePeopleAlt, current: false },
+  //   {
+  //     name: "Invoice",
+  //     href: "#",
+  //     icon: LiaFileInvoiceDollarSolid,
+  //     current: false,
+  //   },
     { name: "Settings", href: "#", icon: FiSettings, current: false },
-  ];
-  const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
+  // ];
+  // const userNavigation = [
+  //   { name: "Your Profile", href: "#" },
+  //   { name: "Settings", href: "#" },
+  //   { name: "Sign out", href: "#" },
   ];
 
   return (

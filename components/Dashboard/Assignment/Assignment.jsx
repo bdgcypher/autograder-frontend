@@ -17,8 +17,9 @@ export default function Assignment({ dataArray }) {
   }
 
   const [open, setOpen] = useState(false);
-  const [person, setPerson] = useState({});
+  const [grade, setGrade] = useState([{}]);
   const [submission, setSubmission] = useState("");
+  const [currentCriterion, setCurrentCriterion] = useState([{}]);
 
   return (
     <>
@@ -26,10 +27,10 @@ export default function Assignment({ dataArray }) {
 
       <main className="md:col-span-2 lg:col-span-9 xl:col-span-10">
         <div className="flex justify-between px-4 sm:px-0">
-          <div className="text-3xl text-gray-900 font-bold">Assignment 1</div>
-          <div className="flex p-2 text-md font-bold text-sky-700 rounded">
+          <div className="text-xl md:text-3xl text-gray-900 font-bold">Assignment 1</div>
+          <div className="flex p-1 md:p-2 text-sm md:text-md font-bold text-sky-700 rounded">
             Published
-            <IoMdCheckmark className="ml-2 mt-1 p-[2px] bg-sky-700 rounded-full text-lg text-slate-50" />
+            <IoMdCheckmark className="ml-2 mt-0 md:mt-1 p-[2px] bg-sky-700 rounded-full text-sm md:text-lg text-slate-50" />
             <div className="flex flex-shrink-0 self-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
@@ -114,6 +115,9 @@ export default function Assignment({ dataArray }) {
           setOpen={setOpen}
           setSubmission={setSubmission}
           submissions={dataArray.submissions}
+          setGrade={setGrade}
+          rubricArray={dataArray.rubric}
+          setCurrentCriterion={setCurrentCriterion}
         />
 
         {/* View Submission popup */}
@@ -124,6 +128,11 @@ export default function Assignment({ dataArray }) {
           submissions={dataArray.submissions}
           submission={submission}
           setSubmission={setSubmission}
+          grade={grade}
+          setGrade={setGrade}
+          rubricArray={dataArray.rubric}
+          currentCriterion={currentCriterion}
+          setCurrentCriterion={setCurrentCriterion}
         />
       </main>
     </>

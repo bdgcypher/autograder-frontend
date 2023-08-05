@@ -32,7 +32,7 @@ export default function AssignmentDescription({ assignment }) {
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-lg text-gray-900 font-bold">
-                          {assignment.title}
+                          Description
                         </p>
                         <div className="flex space-x-6">
                           <span className="inline-flex items-center text-sm">

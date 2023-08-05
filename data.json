@@ -2,7 +2,6 @@
   "assignment": [
     {
       "id": "1",
-      "title": "Green Tech Paper",
       "totalPoints": "15",
       "body": "Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.\n\nFor example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1, 1, 5] should return 10, since we pick 5 and 5.\n\nFollow-up: Can you do this in O(N) time and constant space?\n\nFor your submission, create a python function which accepts a single list of integers and/or floats."
     }
@@ -58,32 +57,32 @@
       "grade": [
         {
           "name": "Big O",
-          "score": 3.0,
+          "score": 3,
           "assessment": "The students solution provided is O(N) time and constant space complexity."
         },
         {
           "name": "Validity",
-          "score": 1.0,
+          "score": 1,
           "assessment": "The assignment wanted the result of the largest possible sum. Returning zero when nothing in the list can sum to zero is not following specifications. If all possible sums are negative, the smallest negative sum should be output."
         },
         {
           "name": "Organization",
-          "score": 2.0,
+          "score": 2,
           "assessment": "The code is organized and concise. Most functions and variables are well named."
         },
         {
           "name": "Comments",
-          "score": 2.0,
+          "score": 2,
           "assessment": "The code is very readable, however a comment should exist explaining the algorithm. This could also be included in a doc string, which would remove the need for inline comments (when the code is this simple), however no doc string was present."
         },
         {
           "name": "Documentation",
-          "score": 0.0,
+          "score": 0,
           "assessment": "No functions are documented."
         },
         {
           "name": "Naming",
-          "score": 2.0,
+          "score": 2,
           "assessment": "All functions and variables are well named."
         }
       ]

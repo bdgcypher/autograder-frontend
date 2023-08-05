@@ -44,7 +44,7 @@ export default function Rubric({ rubricArray }) {
                         <tr className="flex divide-x divide-gray-300">
                           <th
                             scope="col"
-                            className="w-32 lg:w-36 py-3.5 pl-4 pr-4 text-sm font-semibold bg-green-200 text-gray-900 sm:pl-0 rounded-l"
+                            className="w-32 lg:w-36 py-3.5 pl-4 pr-4 text-sm font-semibold bg-green-200 text-gray-900 sm:pl-0 rounded-tl"
                           >
                             Name
                           </th>
@@ -57,7 +57,7 @@ export default function Rubric({ rubricArray }) {
                           </th>
                           <th
                             scope="col"
-                            className="w-12 py-3.5 pl-2 pr-2 text-sm font-semibold bg-rose-200 text-gray-900 rounded-r"
+                            className="w-12 py-3.5 pl-2 pr-2 text-sm font-semibold bg-rose-200 text-gray-900 rounded-tr"
                           >
                             Total
                           </th>
@@ -93,7 +93,7 @@ export default function Rubric({ rubricArray }) {
                               : null}
                             <td
                               key={crypto.randomUUID}
-                              className="flex-none w-12 py-4 px-4 text-sm text-gray-900 font-bold sm:pr-0"
+                              className="flex-none w-12 py-4 text-center text-sm text-gray-900 font-bold sm:pr-0"
                             >
                               {criterion.levels[0].score}
                             </td>
