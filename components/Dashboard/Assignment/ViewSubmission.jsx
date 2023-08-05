@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, Fragment } from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoMdClose } from "react-icons/io";
 
 export default function ViewSubmission({ open, setOpen, person, submission }) {
-
-
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -37,7 +35,15 @@ export default function ViewSubmission({ open, setOpen, person, submission }) {
               >
                 <Dialog.Panel className="relative w-screen lg:w-3/4 my-0 md:my-10 bg-white rounded-md text-left shadow-xl transform transition-all">
                   <div className="relative min-h-screen py-14 mx-auto rounded-md bg-white">
-                    <div>
+                    <div className="flex flex-row">
+                      <div className="absolute top-6 left-10">
+                        <div className="flex flex-row">
+                          <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
+                          <h1 className="mb-8 text-lg font-semibold leading-6 text-gray-900">
+                            Assignment 1 - {person.name}
+                          </h1>
+                        </div>
+                      </div>
                       <IoMdClose
                         onClick={() => setOpen(false)}
                         className="absolute top-6 right-6 text-3xl text-rose-400 cursor-pointer"
@@ -50,12 +56,6 @@ export default function ViewSubmission({ open, setOpen, person, submission }) {
                           <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
                             {/* Main area */}
 
-                            <div className="flex flex-row">
-                              <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
-                              <h1 className="mb-8 text-lg font-semibold leading-6 text-gray-900">
-                                Assignment 1 - {person}
-                              </h1>
-                            </div>
                             <SyntaxHighlighter
                               language="python"
                               style={docco}

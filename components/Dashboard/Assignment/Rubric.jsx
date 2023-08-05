@@ -51,7 +51,7 @@ export default function Rubric({ rubricArray }) {
                           <th
                             scope="colgroup"
                             colSpan={rubricArray.length - 2}
-                            className="grow px-4 py-3.5  text-sm font-semibold bg-sky-100 text-gray-900"
+                            className="grow px-4 py-3.5  text-sm font-semibold bg-slate-100 text-gray-900"
                           >
                             Ratings
                           </th>
@@ -81,7 +81,9 @@ export default function Rubric({ rubricArray }) {
                                     key={crypto.randomUUID}
                                     className="w-full p-4 text-sm text-gray-500"
                                   >
-                                    + {level.score}
+                                    <div className="bg-sky-100 rounded-full w-16 text-center">
+                                      + {level.score}
+                                    </div>
                                     <br />
                                     <hr className="mt-2 text-gray-700 w-10" />
                                     <br />
