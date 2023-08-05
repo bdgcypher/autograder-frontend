@@ -6,68 +6,6 @@ import { BiDotsVerticalRounded, BiEditAlt } from "react-icons/bi";
 
 export default function Rubric({ rubricArray }) {
 
-  const [criteria, setCriteria] = useState([
-    {
-      name: "Solution",
-      levels: [
-        {
-          score: 1,
-          description: "Solution does not work",
-        },
-        {
-          score: 3,
-          description:
-            "The solution partially solves the problem, but errors out after a few seconds",
-        },
-        {
-          score: 5,
-          description: "The solution works correctly and efficiently",
-        },
-      ],
-      levelsTotal: "5",
-    },
-    {
-      name: "Versatility",
-      levels: [
-        {
-          score: 2,
-          description: "Only works for the original example",
-        },
-        {
-          score: 4,
-          description: "Works well on some instances but not others",
-        },
-        {
-          score: 6,
-          description:
-            "The submission can run successfully on many different instances of the assigned issue",
-        },
-      ],
-      levelsTotal: "6",
-    },
-    {
-      name: "Organization",
-      levels: [
-        {
-          score: 1,
-          description: "Very disorganized",
-        },
-        {
-          score: 3,
-          description:
-            "Fairly organized, but some things are not explained clearly",
-        },
-        {
-          score: 4,
-          description: "Very organized, everything makes sense and is readable",
-        },
-      ],
-      levelsTotal: "4",
-    },
-    // More criteria...
-  ]);
-
-  console.log(rubricArray)
 
   return (
     <div className="mt-10 p-4 bg-white rounded-xl shadow-md">
@@ -100,26 +38,26 @@ export default function Rubric({ rubricArray }) {
             <div className="px-4 sm:px-6 lg:px-8">
               <div className="mt-8 flow-root">
                 <div className="-mx-4 -my-2 mb-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                  <div className="inline-block min-w-full rounded border border-gray-300">
                     <table className="min-w-full divide-y divide-gray-300">
                       <thead>
-                        <tr className="divide-x divide-gray-200">
+                        <tr className="flex divide-x divide-gray-300">
                           <th
                             scope="col"
-                            className="py-3.5 pl-4 pr-4  text-sm font-semibold bg-green-200 text-gray-900 sm:pl-0 rounded-l"
+                            className="w-32 lg:w-36 py-3.5 pl-4 pr-4 text-sm font-semibold bg-green-200 text-gray-900 sm:pl-0 rounded-l"
                           >
                             Name
                           </th>
                           <th
                             scope="colgroup"
                             colSpan={rubricArray.length - 2}
-                            className="px-4 py-3.5  text-sm font-semibold bg-sky-100 text-gray-900"
+                            className="grow px-4 py-3.5  text-sm font-semibold bg-sky-100 text-gray-900"
                           >
                             Ratings
                           </th>
                           <th
                             scope="col"
-                            className="py-3.5 pl-2 pr-2 text-center text-sm font-semibold bg-rose-200 text-gray-900 rounded-r"
+                            className="w-12 py-3.5 pl-2 pr-2 text-sm font-semibold bg-rose-200 text-gray-900 rounded-r"
                           >
                             Total
                           </th>
@@ -129,11 +67,11 @@ export default function Rubric({ rubricArray }) {
                         {rubricArray.map((criterion) => (
                           <tr
                             key={crypto.randomUUID}
-                            className="divide-x divide-gray-300"
+                            className="flex divide-x divide-gray-300"
                           >
                             <td
                               key={crypto.randomUUID}
-                              className="py-4 pl-4 pr-4 text-sm font-medium text-gray-900 bg-green-200 "
+                              className="flex-none w-32 lg:w-36 py-4 pl-4 pr-4 text-sm font-medium text-gray-900"
                             >
                               {criterion.name}
                             </td>
@@ -141,7 +79,7 @@ export default function Rubric({ rubricArray }) {
                               ? criterion.levels.map((level) => (
                                   <td
                                     key={crypto.randomUUID}
-                                    className="p-4 text-sm text-gray-500"
+                                    className="w-full p-4 text-sm text-gray-500"
                                   >
                                     + {level.score}
                                     <br />
@@ -153,7 +91,7 @@ export default function Rubric({ rubricArray }) {
                               : null}
                             <td
                               key={crypto.randomUUID}
-                              className="py-4 pl-4 pr-4 text-sm text-gray-900 font-bold sm:pr-0"
+                              className="flex-none w-12 py-4 px-4 text-sm text-gray-900 font-bold sm:pr-0"
                             >
                               {criterion.levels[0].score}
                             </td>

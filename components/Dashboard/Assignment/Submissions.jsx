@@ -140,7 +140,7 @@ export default function Submissions({ setOpen, setPerson, setSubmission }) {
                         <div
                           onClick={() => {
                             setOpen(true);
-                            setPerson(person.name);
+                            setPerson(person);
                             setSubmission(person.submission)
                           }}
                           className="text-sky-600 hover:text-sky-900 cursor-pointer"
