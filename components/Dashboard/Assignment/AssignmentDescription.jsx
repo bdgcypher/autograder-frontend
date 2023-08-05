@@ -60,12 +60,13 @@ export default function AssignmentDescription({ assignment }) {
                       </div>
                     </div>
                     <div className="mt-4 border border-gray-300 rounded divide-y divide-gray-300">
-                      <div
+                      {/* <div
                         className="mt-2 p-4 pb-20 space-y-4 text-sm text-gray-700"
                         dangerouslySetInnerHTML={{
                           __html: assignment.body,
                         }}
-                      />
+                      /> */}
+                      <pre className="mt-2 p-4 pb-20 space-y-4 text-sm text-gray-700 whitespace-pre-wrap">{assignment.body}</pre>
                     </div>
                   </div>
                   <div className="mt-6 flex justify-between space-x-8">
