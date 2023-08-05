@@ -36,7 +36,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
+      <div className="hidden col-span-2 lg:block">
         <nav
           aria-label="Sidebar"
           className="sticky top-4 divide-y divide-gray-300"

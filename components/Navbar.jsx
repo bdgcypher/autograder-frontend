@@ -5,14 +5,8 @@ import { Menu, Popover, Transition } from "@headlessui/react";
 import { FiSettings } from "react-icons/fi";
 import { RiDashboard2Fill, RiMenuFill } from "react-icons/ri";
 import { MdOutlineDiamond, MdOutlinePeopleAlt } from "react-icons/md";
-import {
-  BiPieChartAlt2,
-  BiSearch,
-  BiBell,
-} from "react-icons/bi";
-import {
-  LiaFileInvoiceDollarSolid,
-} from "react-icons/lia";
+import { BiPieChartAlt2, BiSearch, BiBell } from "react-icons/bi";
+import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
 import { IoMdClose } from "react-icons/io";
 import { TbMessages } from "react-icons/tb";
 
@@ -29,15 +23,15 @@ export default function Navbar() {
   };
   const navigation = [
     { name: "Dashboard", href: "#", icon: RiDashboard2Fill, current: true },
-    { name: "Product", href: "#", icon: MdOutlineDiamond, current: false },
-    { name: "Analytics", href: "#", icon: BiPieChartAlt2, current: false },
-    { name: "Customers", href: "#", icon: MdOutlinePeopleAlt, current: false },
-    {
-      name: "Invoice",
-      href: "#",
-      icon: LiaFileInvoiceDollarSolid,
-      current: false,
-    },
+    // { name: "Product", href: "#", icon: MdOutlineDiamond, current: false },
+    // { name: "Analytics", href: "#", icon: BiPieChartAlt2, current: false },
+    // { name: "Customers", href: "#", icon: MdOutlinePeopleAlt, current: false },
+    // {
+    //   name: "Invoice",
+    //   href: "#",
+    //   icon: LiaFileInvoiceDollarSolid,
+    //   current: false,
+    // },
     { name: "Settings", href: "#", icon: FiSettings, current: false },
   ];
   const userNavigation = [
@@ -76,7 +70,7 @@ export default function Navbar() {
               </div>
               <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
                 <div className="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
-                  <div className="ml-4 md:ml-24 w-10 md:w-5/6 lg:w-full">
+                  <div className="ml-4 md:ml-24 w-10 sm:w-5/6 lg:w-full">
                     <label htmlFor="search" className="sr-only">
                       Search
                     </label>
@@ -160,7 +154,7 @@ export default function Navbar() {
                             <a
                               href={item.href}
                               className={classNames(
-                                active ? "bg-gray-100" : "",
+                                active ? "bg-gray-100 text-black" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
@@ -186,7 +180,7 @@ export default function Navbar() {
                   className={classNames(
                     item.current
                       ? "bg-gray-100 text-sky-700"
-                      : "hover:bg-gray-50",
+                      : "hover:bg-gray-50 text-gray-900",
                     "block rounded-md py-2 px-3 text-base font-medium"
                   )}
                 >
@@ -211,17 +205,30 @@ export default function Navbar() {
                     {user.email}
                   </div>
                 </div>
-                <button
-                  type="button"
-                  className="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500"
-                >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  <BiBell
-                    className="h-6 w-6 text-gray-700"
-                    aria-hidden="true"
-                  />
-                </button>
+                <div className="relative ml-auto flex-shrink-0">
+                  <button
+                    type="button"
+                    className="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-sky-700"
+                  >
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">View messages</span>
+                    <TbMessages
+                      className="h-6 w-6 text-gray-700"
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    className="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-sky-700"
+                  >
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">View notifications</span>
+                    <BiBell
+                      className="h-6 w-6 text-gray-700"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
               </div>
               <div className="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
                 {userNavigation.map((item) => (
@@ -239,19 +246,10 @@ export default function Navbar() {
             <div className="mx-auto mt-6 max-w-3xl px-4 sm:px-6">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-sky-700 px-4 py-2 text-base font-medium text-black shadow-sm hover:bg-rose-700"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-sky-700 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-600"
               >
-                New Post
+                New Assignment
               </a>
-
-              <div className="mt-6 flex justify-center">
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:underline"
-                >
-                  <TbMessages className="h-6 w-6" aria-hidden="true" />
-                </a>
-              </div>
             </div>
           </Popover.Panel>
         </>

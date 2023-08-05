@@ -1,23 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
+import { RadioGroup } from "@headlessui/react";
 
-export default function Grade({ grade, setGrade, rubricArray, currentCriterion, setCurrentCriterion }) {
-  const [selected, setSelected] = useState("");
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Grade({
+  grade,
+  setGrade,
+  rubricArray,
+  currentCriterion,
+  setCurrentCriterion,
+}) {
+  const [selected, setSelected] = useState(rubricArray[0].levels);
+  const [aiSelected, setAiSelected] = useState("");
+  const [userSelected, setUserSelected] = useState("");
 
   const setAiSelection = () => {
     for (let i = 0; i < currentCriterion.length; i++) {
-      let aiSelection = ""
-      console.log(grade[1].id, grade[1].score, currentCriterion[i].score)
-      grade[1].score === currentCriterion[i].score ? (
-        aiSelection = grade[1].id,
-        setSelected(aiSelection)
-      ) : (null)
+      let aiSelection = "";
+      console.log(grade[1].id, grade[1].score, currentCriterion[i].score);
+      grade[1].score === currentCriterion[i].score
+        ? ((aiSelection = "1"), setAiSelected(aiSelection))
+        : null;
     }
-  }
+  };
 
   const setUserSelection = (e) => {
-    setSelected(e)
-  }
+    setUserSelected(e);
+  };
 
   useEffect(() => {
     setCurrentCriterion(rubricArray[0].levels);
@@ -27,7 +39,7 @@ export default function Grade({ grade, setGrade, rubricArray, currentCriterion, 
   return (
     <>
       <div className="mt-10">
-        <fieldset>
+        {/* <fieldset>
           <legend className="text-lg font-bold leading-6 text-gray-900">
             {rubricArray[0].name}
           </legend>
@@ -38,7 +50,7 @@ export default function Grade({ grade, setGrade, rubricArray, currentCriterion, 
                 id={grade.id}
                 // onClick={setUserSelection}
                 
-                className={`relative flex items-start mb-4 p-4 ${ selected === grade.id ? "border-2 border-sky-700" : "border border-gray-200" }  rounded shadow hover:shadow-xl`}
+                className={`relative flex items-start mb-4 p-4 ${ aiSelected === gradeIdx ? "border-2 border-sky-700" : "border border-gray-200" }  rounded shadow hover:shadow-xl`}
               >
                 <div className="min-w-0 w-full flex flex-col text-sm leading-6">
                   <label
@@ -65,12 +77,75 @@ export default function Grade({ grade, setGrade, rubricArray, currentCriterion, 
               </div>
             ))}
           </div>
-        </fieldset>
+        </fieldset> */}
+
+        <RadioGroup value={selected} onChange={setSelected}>
+          <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+          <div className="space-y-4">
+            {currentCriterion.map((criterion) => (
+              <RadioGroup.Option
+                key={criterion.name}
+                value={criterion}
+                className={({ active }) =>
+                  classNames(
+                    active
+                      ? "border-2 border-rose-400 ring-none outline-none"
+                      : "border border-gray-300",
+                    "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow focus:outline-none sm:flex sm:justify-between hover:shadow-lg"
+                  )
+                }
+              >
+                {({ active, checked }) => (
+                  <>
+                    <span className="flex items-center">
+                      <span className="flex flex-col text-sm">
+                        <RadioGroup.Label
+                          as="span"
+                          className="font-medium text-gray-900"
+                        >
+                          {criterion.name}
+                        </RadioGroup.Label>
+                        <RadioGroup.Description
+                          as="span"
+                          className="text-gray-500"
+                        >
+                          <span className="block sm:inline">
+                            {criterion.description}
+                          </span>{" "}
+                          <span
+                            className="hidden sm:mx-1 sm:inline"
+                            aria-hidden="true"
+                          >
+                            &middot;
+                          </span>{" "}
+                          <span className="block sm:inline">{criterion.score}</span>
+                        </RadioGroup.Description>
+                      </span>
+                    </span>
+                    <RadioGroup.Description
+                      as="span"
+                      className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
+                    >
+
+                    </RadioGroup.Description>
+                    <span
+                      className={classNames(
+                        active ? "border" : "border-2",
+                        checked ? "border-rose-400" : "border-transparent",
+                        "pointer-events-none absolute -inset-px rounded-lg"
+                      )}
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
+              </RadioGroup.Option>
+            ))}
+          </div>
+        </RadioGroup>
       </div>
     </>
   );
 }
-
 
 // Other potential code
 
@@ -194,4 +269,3 @@ export default function Grade({ grade, setGrade, rubricArray, currentCriterion, 
 //     </>
 //   );
 // }
-
