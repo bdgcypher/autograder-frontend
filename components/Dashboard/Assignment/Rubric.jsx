@@ -3,48 +3,45 @@ import react, { useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/20/solid";
 import { BiDotsVerticalRounded, BiEditAlt } from "react-icons/bi";
 
-
 export default function Rubric({ rubricArray }) {
-
-
   return (
     <div className="mt-10 p-4 bg-white rounded-xl shadow-md">
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="sm:flex sm:items-center">
+      <div className="px-2">
+        <div className="">
           <div className="sm:flex-auto">
-          <div className="sm:flex sm:items-center">
-          <div className="sm:flex-auto">
-            <div className="flex flex-row">
-                <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
-                <h1 className="text-lg font-semibold leading-6 text-gray-900">
-              Rubric
-            </h1>
+            <div className="flex flex-row px-4 justify-betweensm:flex sm:items-center">
+              <div className="sm:flex-auto">
+                <div className="flex flex-row">
+                  <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
+                  <h1 className="text-lg font-semibold leading-6 text-gray-900">
+                    Rubric
+                  </h1>
+                </div>
+
+                <p className="mt-2 text-sm text-gray-700">
+                  Criteria for this assignment.
+                </p>
+              </div>
+              <div className="mt-4 -mr-4 sm:mt-0">
+                <button
+                  type="button"
+                  className="flex flex-row rounded-md bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                >
+                  Edit
+                  <BiEditAlt className="ml-2 text-xl" />
+                </button>
+              </div>
             </div>
-            
-            <p className="mt-2 text-sm text-gray-700">
-              Criteria for this assignment.
-            </p>
-          </div>
-          <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <button
-              type="button"
-              className="flex flex-row rounded-md bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-            >
-              Edit
-              <BiEditAlt className="ml-2 text-xl" />
-            </button>
-          </div>
-        </div>
-            <div className="px-4">
+            <div className="">
               <div className="mt-8 flow-root">
-                <div className="-mx-4 -my-2 mb-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div className="inline-block min-w-full rounded border border-gray-300">
-                    <table className="min-w-full divide-y divide-gray-300">
+                <div className=" -my-2 mb-4">
+                  <div className="w-full overflow-x-scroll inline-block rounded border border-gray-300">
+                    <table className="divide-y divide-gray-300">
                       <thead>
                         <tr className="flex divide-x divide-gray-300">
                           <th
                             scope="col"
-                            className="w-32 lg:w-36 py-3.5 pl-4 pr-4 text-sm font-semibold bg-green-200 text-gray-900 sm:pl-0 rounded-tl"
+                            className="w-28 lg:w-32 py-3.5 pl-4 pr-4 text-sm font-semibold bg-green-200 text-gray-900 sm:pl-0 rounded-tl"
                           >
                             Name
                           </th>
@@ -57,7 +54,7 @@ export default function Rubric({ rubricArray }) {
                           </th>
                           <th
                             scope="col"
-                            className="w-12 py-3.5 pl-2 pr-2 text-sm font-semibold bg-rose-200 text-gray-900 rounded-tr"
+                            className="w-14 py-3.5 pl-2 pr-2 text-sm font-semibold bg-rose-200 text-gray-900 rounded-tr"
                           >
                             Total
                           </th>
@@ -71,7 +68,7 @@ export default function Rubric({ rubricArray }) {
                           >
                             <td
                               key={crypto.randomUUID}
-                              className="flex-none w-32 lg:w-36 py-4 pl-4 pr-4 text-sm font-medium text-gray-900"
+                              className="flex-none w-28 lg:w-32 py-4 pl-2 pr-4 text-sm font-medium text-gray-900"
                             >
                               {criterion.name}
                             </td>
@@ -93,7 +90,7 @@ export default function Rubric({ rubricArray }) {
                               : null}
                             <td
                               key={crypto.randomUUID}
-                              className="flex-none w-12 py-4 text-center text-sm text-gray-900 font-bold sm:pr-0"
+                              className="flex-none w-14 py-4 text-center text-sm text-gray-900 font-bold sm:pr-0"
                             >
                               {criterion.levels[0].score}
                             </td>

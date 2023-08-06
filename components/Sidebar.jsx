@@ -36,7 +36,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className="hidden col-span-2 lg:block">
+      <div className="hidden lg:block z-10 group w-20 hover:w-60 transition-all ease-in-out duration-300 p-4 bg-white shadow">
         <nav
           aria-label="Sidebar"
           className="sticky top-4 divide-y divide-gray-300"
@@ -50,7 +50,7 @@ export default function Sidebar() {
                   item.current
                     ? "bg-gray-200 text-sky-700 font-bold"
                     : "text-gray-700 hover:bg-gray-50",
-                  "group flex items-center rounded-md px-3 py-2 text-sm font-medium"
+                  "group min-w-10 w-10 group-hover:w-full transition-all ease-in-out duration-300 flex items-center rounded-md px-3 py-2 text-sm font-medium"
                 )}
                 aria-current={item.current ? "page" : undefined}
               >

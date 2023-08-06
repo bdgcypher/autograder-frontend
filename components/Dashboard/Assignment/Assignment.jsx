@@ -25,7 +25,7 @@ export default function Assignment({ dataArray }) {
     <>
       {/* Assignment container */}
 
-      <main className="md:col-span-2 lg:col-span-9 xl:col-span-10">
+      <main className="mt-10 lg:col-span-11">
         <div className="flex justify-between px-4 sm:px-0">
           <div className="text-xl md:text-3xl text-gray-900 font-bold">Assignment 1</div>
           <div className="flex p-1 md:p-2 text-sm md:text-md font-bold text-sky-700 rounded">

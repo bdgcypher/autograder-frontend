@@ -26,8 +26,8 @@ export default function Dashboard() {
       <div className="min-h-full">
         <Navbar />
 
-        <div className="py-10 bg-slate-50">
-          <div className="mx-auto max-w-xs sm:px-6 lg:grid sm:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-2">
+        <div className="pb-10 bg-slate-50">
+          <div className="mx-auto max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-full px-0 lg:grid lg:grid-cols-12 lg:gap-8">
             <Sidebar />
 
             <Assignment dataArray={data} />

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
+import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -80,59 +81,75 @@ export default function Grade({
         </fieldset> */}
 
         <RadioGroup value={selected} onChange={setSelected}>
-          <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
-          <div className="space-y-4">
-            {currentCriterion.map((criterion) => (
+          <div className="space-y-3">
+            <legend className="text-lg font-bold leading-6 text-gray-900">
+              {rubricArray[0].name}
+            </legend>
+            {currentCriterion.map((grade) => (
               <RadioGroup.Option
-                key={criterion.name}
-                value={criterion}
+                key={grade.name}
+                value={grade}
                 className={({ active }) =>
                   classNames(
                     active
                       ? "border-2 border-rose-400 ring-none outline-none"
                       : "border border-gray-300",
-                    "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow focus:outline-none sm:flex sm:justify-between hover:shadow-lg"
+                    "relative block cursor-pointer rounded bg-white px-4 py-4 shadow focus:outline-none sm:flex sm:justify-between hover:shadow-lg"
                   )
                 }
               >
                 {({ active, checked }) => (
                   <>
-                    <span className="flex items-center">
-                      <span className="flex flex-col text-sm">
-                        <RadioGroup.Label
-                          as="span"
-                          className="font-medium text-gray-900"
-                        >
-                          {criterion.name}
-                        </RadioGroup.Label>
-                        <RadioGroup.Description
-                          as="span"
-                          className="text-gray-500"
-                        >
-                          <span className="block sm:inline">
-                            {criterion.description}
-                          </span>{" "}
-                          <span
-                            className="hidden sm:mx-1 sm:inline"
-                            aria-hidden="true"
+                    <div className="flex flex-row w-full justify-between">
+                      <div className="flex text-sm w-full">
+                        <div className="flex flex-col w-full">
+                          <div
+                            className="text-gray-500"
                           >
-                            &middot;
-                          </span>{" "}
-                          <span className="block sm:inline">{criterion.score}</span>
-                        </RadioGroup.Description>
-                      </span>
-                    </span>
-                    <RadioGroup.Description
-                      as="span"
-                      className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
-                    >
-
-                    </RadioGroup.Description>
+                            <p className="">
+                              {grade.description}
+                            </p>
+                          </div>
+                          <div
+                            className="text-gray-500"
+                          >
+                            <p className="w-14 mt-4 text-center font-sm text-gray-700 bg-sky-100 rounded-full">
+                              + {grade.score}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="">
+                          <MdCheckBoxOutlineBlank
+                            className={classNames(
+                              checked ? "hidden" : "",
+                              "h-5 w-5 text-gray-300"
+                            )}
+                            aria-hidden="true"
+                          />
+                          <MdCheckBox
+                            className={classNames(
+                              checked && aiSelected === grade.id ? "" : "hidden",
+                              
+                              "h-5 w-5 text-sky-700"
+                            )}
+                            aria-hidden="true"
+                          />
+                          <MdCheckBox
+                            className={classNames(
+                              // checked && userSelected === grade.id ? "" : "hidden",
+                              checked ? "" : "hidden",
+                              "h-5 w-5 text-rose-400"
+                            )}
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
+                    </div>
                     <span
                       className={classNames(
-                        active ? "border" : "border-2",
-                        checked ? "border-rose-400" : "border-transparent",
-                        "pointer-events-none absolute -inset-px rounded-lg"
+                        // active ? "border" : "",
+                        checked ? "border-3 border-rose-400" : "",
+                        "pointer-events-none absolute -inset-px rounded"
                       )}
                       aria-hidden="true"
                     />

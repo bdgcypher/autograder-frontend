@@ -69,15 +69,6 @@ export default function AssignmentDescription({ assignment }) {
                       <pre className="mt-2 p-4 pb-20 space-y-4 text-sm text-gray-700 whitespace-pre-wrap">{assignment.body}</pre>
                     </div>
                   </div>
-                  <div className="mt-6 flex justify-between space-x-8">
-                    <div className="hidden text-sm p-2 rounded text-gray-600 border border-gray-600 hover:text-gray-100 hover:bg-sky-700">
-                      <span className="inline-flex items-center text-sm">
-                        <button type="button" className="inline-flex space-x-2">
-                          <span className="font-medium">Save</span>
-                        </button>
-                      </span>
-                    </div>
-                  </div>
                 </article>
               </li>
             ))}

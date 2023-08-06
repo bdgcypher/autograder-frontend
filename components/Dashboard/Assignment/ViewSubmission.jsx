@@ -66,7 +66,7 @@ export default function ViewSubmission({
                     <hr className="mt-6 border-gray-200" />
                     <div className="flex flex-col px-0">
                       <main className="">
-                        <div className="xl:pr-96">
+                        <div className="lg:pr-96">
                           <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
                             {/* Main area */}
 
@@ -85,7 +85,7 @@ export default function ViewSubmission({
 
                       {/* Secondary column (hidden on smaller screens) */}
 
-                      <aside className="fixed mt-20 inset-y-0 right-0 hidden w-96 border-l border-gray-200 px-4 py-6 xl:block overflow-y-scroll">
+                      <aside className="fixed mt-20 inset-y-0 right-0 hidden w-96 border-l border-gray-200 px-4 py-6 lg:block overflow-y-scroll">
                         {/* Select which submission you are viewing with the dropdown */}
                         <SubmissionDropdown
                           submission={submission}
