@@ -47,14 +47,17 @@ export default function ViewSubmission({
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative h-screen-90 w-11/12 lg:w-5/6 my-0 md:my-10 bg-white rounded-md text-left shadow-xl transform transition-all">
+                <Dialog.Panel className="relative h-screen-90 w-full md:w-11/12 lg:w-5/6 my-0 md:my-10 bg-white rounded-md text-left shadow-xl transform transition-all">
                   <div className="relative py-14 mx-auto rounded-md bg-white">
                     <div className="flex flex-row">
                       <div className="absolute top-6 left-10">
-                        <div className="flex flex-row">
+                        <div className="flex flex-col md:flex-row">
                           <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
-                          <h1 className="mb-8 text-lg font-semibold leading-6 text-gray-900">
-                            Assignment 1 - {submission.name}
+                          <h1 className="-mt-6 md:-mt-0 mb-0 text-lg font-semibold leading-6 text-gray-900">
+                            Assignment 1 
+                          </h1>
+                          <h1 className="mb-8 text-lg font-regular leading-6 text-gray-900">
+                            - {submission.name}
                           </h1>
                         </div>
                       </div>

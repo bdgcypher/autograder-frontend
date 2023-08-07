@@ -35,7 +35,7 @@ export default function Grade({
   useEffect(() => {
     setCurrentCriterion(rubricArray[0].levels);
     setAiSelection();
-  }, []);
+  });
 
   return (
     <>
@@ -91,9 +91,7 @@ export default function Grade({
                 value={grade}
                 className={({ active }) =>
                   classNames(
-                    active
-                      ? "border-2 border-rose-400 ring-none outline-none"
-                      : "border border-gray-300",
+                    active ? "" : "border border-gray-300",
                     "relative block cursor-pointer rounded bg-white px-4 py-4 shadow focus:outline-none sm:flex sm:justify-between hover:shadow-lg"
                   )
                 }
@@ -103,16 +101,10 @@ export default function Grade({
                     <div className="flex flex-row w-full justify-between">
                       <div className="flex text-sm w-full">
                         <div className="flex flex-col w-full">
-                          <div
-                            className="text-gray-500"
-                          >
-                            <p className="">
-                              {grade.description}
-                            </p>
+                          <div className="text-gray-500">
+                            <p className="">{grade.description}</p>
                           </div>
-                          <div
-                            className="text-gray-500"
-                          >
+                          <div className="text-gray-500">
                             <p className="w-14 mt-4 text-center font-sm text-gray-700 bg-sky-100 rounded-full">
                               + {grade.score}
                             </p>
@@ -128,16 +120,17 @@ export default function Grade({
                           />
                           <MdCheckBox
                             className={classNames(
-                              checked && aiSelected === grade.id ? "" : "hidden",
-                              
+                              // checked && aiSelected === grade.id ? "" : "hidden",
+                              checked ? "" : "hidden",
                               "h-5 w-5 text-sky-700"
                             )}
                             aria-hidden="true"
                           />
                           <MdCheckBox
                             className={classNames(
-                              // checked && userSelected === grade.id ? "" : "hidden",
-                              checked ? "" : "hidden",
+                              checked && userSelected === grade.id
+                                ? ""
+                                : "hidden",
                               "h-5 w-5 text-rose-400"
                             )}
                             aria-hidden="true"
@@ -147,9 +140,16 @@ export default function Grade({
                     </div>
                     <span
                       className={classNames(
-                        // active ? "border" : "",
-                        checked ? "border-3 border-rose-400" : "",
-                        "pointer-events-none absolute -inset-px rounded"
+                        // checked && aiSelected === grade.id ? "" : "hidden",
+                        checked ? "" : "hidden",
+                        "pointer-events-none absolute -inset-px rounded border-2 border-sky-700"
+                      )}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className={classNames(
+                        checked && userSelected === grade.id ? "" : "hidden",
+                        "pointer-events-none absolute -inset-px rounded border-2 border-rose-400"
                       )}
                       aria-hidden="true"
                     />
