@@ -21,9 +21,9 @@ export default function Grade({
   const setAiSelection = () => {
     for (let i = 0; i < currentCriterion.length; i++) {
       let aiSelection = "";
-      console.log(grade[1].id, grade[1].score, currentCriterion[i].score);
+      console.log(grade[1].name, grade[1].score, currentCriterion[i].score);
       grade[1].score === currentCriterion[i].score
-        ? ((aiSelection = "1"), setAiSelected(aiSelection))
+        ? ((aiSelection = currentCriterion[i].score), setAiSelected(aiSelection))
         : null;
     }
   };
@@ -113,22 +113,22 @@ export default function Grade({
                         <div className="">
                           <MdCheckBoxOutlineBlank
                             className={classNames(
-                              checked ? "hidden" : "",
+                              checked | aiSelected === grade.score | userSelected === grade.score ? "hidden" : "",
                               "h-5 w-5 text-gray-300"
                             )}
                             aria-hidden="true"
                           />
                           <MdCheckBox
                             className={classNames(
-                              // checked && aiSelected === grade.id ? "" : "hidden",
-                              checked ? "" : "hidden",
+                              aiSelected === grade.score ? "" : "hidden",
+                              // checked ? "" : "hidden",
                               "h-5 w-5 text-sky-700"
                             )}
                             aria-hidden="true"
                           />
                           <MdCheckBox
                             className={classNames(
-                              checked && userSelected === grade.id
+                              checked && userSelected === grade.score
                                 ? ""
                                 : "hidden",
                               "h-5 w-5 text-rose-400"
@@ -140,8 +140,8 @@ export default function Grade({
                     </div>
                     <span
                       className={classNames(
-                        // checked && aiSelected === grade.id ? "" : "hidden",
-                        checked ? "" : "hidden",
+                        aiSelected === grade.score ? "" : "hidden",
+                        // checked ? "" : "hidden",
                         "pointer-events-none absolute -inset-px rounded border-2 border-sky-700"
                       )}
                       aria-hidden="true"
