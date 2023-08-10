@@ -25,7 +25,7 @@ export default function Rubric({ rubricArray }) {
               <div className="mt-4 -mr-4 sm:mt-0">
                 <button
                   type="button"
-                  className="flex flex-row rounded-md bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                  className="flex flex-row rounded bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                 >
                   Edit
                   <BiEditAlt className="ml-2 text-xl" />
@@ -61,21 +61,21 @@ export default function Rubric({ rubricArray }) {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-300 bg-white">
-                        {rubricArray.map((criterion) => (
+                        {rubricArray.map((criterion, index) => (
                           <tr
-                            key={crypto.randomUUID}
+                            key={index}
                             className="flex divide-x divide-gray-300"
                           >
                             <td
-                              key={crypto.randomUUID}
+                              key={index + 1}
                               className="flex-none w-28 lg:w-32 py-4 pl-2 pr-4 text-sm font-medium text-gray-900"
                             >
                               {criterion.name}
                             </td>
                             {criterion.levels
-                              ? criterion.levels.map((level) => (
+                              ? criterion.levels.map((level, index) => (
                                   <td
-                                    key={crypto.randomUUID}
+                                    key={index + 2}
                                     className="w-full p-4 text-sm text-gray-500"
                                   >
                                     <div className="bg-sky-100 rounded-full w-16 text-center">
@@ -89,7 +89,7 @@ export default function Rubric({ rubricArray }) {
                                 ))
                               : null}
                             <td
-                              key={crypto.randomUUID}
+                              key={index + 5}
                               className="flex-none w-14 py-4 text-center text-sm text-gray-900 font-bold sm:pr-0"
                             >
                               {criterion.levels[0].score}

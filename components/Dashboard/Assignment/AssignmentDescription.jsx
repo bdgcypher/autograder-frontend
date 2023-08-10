@@ -52,7 +52,7 @@ export default function AssignmentDescription({ assignment }) {
                       <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
                         <button
                           type="button"
-                          className="flex flex-row rounded-md bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                          className="flex flex-row rounded bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                         >
                           Edit
                           <BiEditAlt className="ml-2 text-xl" />

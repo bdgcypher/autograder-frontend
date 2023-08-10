@@ -10,25 +10,34 @@ function classNames(...classes) {
 }
 
 export default function Grade({
+  setOpen,
   grade,
   setGrade,
   rubricArray,
   currentCriterion,
   setCurrentCriterion,
 }) {
+
   const [criterionId, setCriterionId] = useState(0);
   const [selected, setSelected] = useState(rubricArray[criterionId].levels);
   const [aiSelected, setAiSelected] = useState("");
   const [userSelected, setUserSelected] = useState("");
 
+
+  const setUserSelection = (e) => {
+    setUserSelected(e);
+  };
+
+  // Automatically set a variable to represent the grade the AI has selected for the currently viewed criterion
+
   const setAiSelection = () => {
     for (let i = 0; i < currentCriterion.length; i++) {
       let aiSelection = "";
-      console.log(
-        grade[criterionId].name,
-        grade[criterionId].score,
-        currentCriterion[i].score
-      );
+      // console.log(
+      //   grade[criterionId].name,
+      //   grade[criterionId].score,
+      //   currentCriterion[i].score
+      // );
       grade[criterionId].score === currentCriterion[i].score
         ? ((aiSelection = currentCriterion[i].score),
           setAiSelected(aiSelection))
@@ -36,13 +45,11 @@ export default function Grade({
     }
   };
 
-  const setUserSelection = (e) => {
-    setUserSelected(e);
-  };
-
   useEffect(() => {
     setAiSelection();
   });
+
+  // Criterion component
 
   return (
     <>
@@ -70,7 +77,7 @@ export default function Grade({
                   <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
                     {" "}
                     -{" "}
-                    <FaRobot className="mx-2 text-2xl font-semibold leading-6 text-gray-700" />
+                    <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
                     AI selected grade
                   </p>
                 </div>
@@ -79,12 +86,13 @@ export default function Grade({
                   <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
                     {" "}
                     -{" "}
-                    <FaUserGraduate className="mx-2 text-2xl font-semibold leading-6 text-gray-700" />
+                    <FaUserGraduate className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
                     User selected grade
                   </p>
                 </div>
               </div>
             </legend>
+            {/* Iterate through the selcted criterion array and create a card for each level of the given criterion with its description and score */}
             {currentCriterion.map((rating) => (
               <RadioGroup.Option
                 key={rating.name}
@@ -110,6 +118,7 @@ export default function Grade({
                             </p>
                           </div>
                         </div>
+                        {/* Show a blank checkbox if not selected */}
                         <div className="">
                           <MdCheckBoxOutlineBlank
                             className={classNames(
@@ -122,6 +131,7 @@ export default function Grade({
                             )}
                             aria-hidden="true"
                           />
+                          {/* Show a blue checkbox if the AI selected this score */}
                           <MdCheckBox
                             className={classNames(
                               aiSelected === rating.score ? "" : "hidden",
@@ -129,6 +139,7 @@ export default function Grade({
                             )}
                             aria-hidden="true"
                           />
+                          {/* Show a rose checkbox if the User selected this score */}
                           <MdCheckBox
                             className={classNames(
                               checked ? "" : "hidden",
@@ -139,6 +150,7 @@ export default function Grade({
                         </div>
                       </div>
                     </div>
+                    {/* Outline in blue if the Ai selected this score */}
                     <span
                       className={classNames(
                         aiSelected === rating.score ? "" : "hidden",
@@ -146,6 +158,7 @@ export default function Grade({
                       )}
                       aria-hidden="true"
                     />
+                    {/* Outline in rose if the User selected this score */}
                     <span
                       className={classNames(
                         checked ? "" : "hidden",
@@ -159,6 +172,11 @@ export default function Grade({
             ))}
           </div>
         </RadioGroup>
+        {/* Submit or cancel the grading */}
+        <div className="flex flex-row w-full mt-10">
+          <div onClick={() => {setOpen(false)}} className="h-10 w-32 p-2 text-center font-semibold hover:font-regular text-sky-700 hover:text-white border border-sky-700 bg-white hover:bg-sky-600 shadow rounded cursor-pointer">Cancel</div>
+          <div onClick={() => {}} className="h-10 w-full ml-2 p-2 text-center bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer">Submit</div>
+        </div>
       </div>
     </>
   );

@@ -84,7 +84,7 @@ export default function Navbar() {
                       <input
                         id="search"
                         name="search"
-                        className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-1 md:pr-3 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-700 sm:text-sm sm:leading-6"
+                        className="block w-full rounded border-0 bg-white py-1.5 pl-10 pr-1 md:pr-3 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-700 sm:text-sm sm:leading-6"
                         placeholder="Search"
                         type="search"
                       />
@@ -94,7 +94,7 @@ export default function Navbar() {
               </div>
               <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
                 {/* Mobile menu button */}
-                <Popover.Button className="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-700">
+                <Popover.Button className="relative -mx-2 inline-flex items-center justify-center rounded p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-700">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open menu</span>
                   {open ? (
@@ -132,7 +132,7 @@ export default function Navbar() {
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="h-8 w-8 rounded-md"
+                        className="h-8 w-8 rounded"
                         src={user.imageUrl}
                         alt=""
                       />
@@ -147,7 +147,7 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
@@ -181,7 +181,7 @@ export default function Navbar() {
                     item.current
                       ? "bg-gray-100 text-sky-700"
                       : "hover:bg-gray-50 text-gray-900",
-                    "block rounded-md py-2 px-3 text-base font-medium"
+                    "block rounded py-2 px-3 text-base font-medium"
                   )}
                 >
                   {item.name}
@@ -235,7 +235,7 @@ export default function Navbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                    className="block rounded px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
                   >
                     {item.name}
                   </a>
@@ -246,7 +246,7 @@ export default function Navbar() {
             <div className="mx-auto mt-6 max-w-3xl px-4 sm:px-6">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-sky-700 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-600"
+                className="flex w-full items-center justify-center rounded border border-transparent bg-sky-700 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-sky-600"
               >
                 New Assignment
               </a>

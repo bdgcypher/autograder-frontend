@@ -168,7 +168,7 @@ export default function CreateAssignment() {
                               leaveFrom="transform opacity-100 scale-100"
                               leaveTo="transform opacity-0 scale-95"
                             >
-                              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lgfocus:outline-none">
+                              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded bg-white shadow-lgfocus:outline-none">
                                 <div className="py-1">
                                   <Menu.Item>
                                     {({ active }) => (
@@ -223,7 +223,7 @@ export default function CreateAssignment() {
                                 className="relative inline-block text-left"
                               >
                                 <div>
-                                  <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-bold text-gray-900 hover:bg-gray-50">
+                                  <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded bg-white px-3 py-2 text-sm font-bold text-gray-900 hover:bg-gray-50">
                                     Header #1
                                     <IoIosArrowDown
                                       className="-mr-1 h-5 w-5 text-gray-400"
@@ -241,7 +241,7 @@ export default function CreateAssignment() {
                                   leaveFrom="transform opacity-100 scale-100"
                                   leaveTo="transform opacity-0 scale-95"
                                 >
-                                  <Menu.Items className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                  <Menu.Items className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                     <div className="py-1">
                                       <Menu.Item>
                                         {({ active }) => (
@@ -630,7 +630,7 @@ export default function CreateAssignment() {
                 />
               </div>
               <div className="flex-shrink-0">
-                <button className="inline-flex items-center rounded-md bg-sky-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
+                <button className="inline-flex items-center rounded bg-sky-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">
                   Create
                 </button>
               </div>

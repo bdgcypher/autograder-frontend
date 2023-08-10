@@ -47,7 +47,7 @@ export default function Submissions({ setOpen, setSubmission, submissions, setGr
           <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
             <button
               type="button"
-              className="block rounded-md bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+              className="block rounded bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
               Request submission
             </button>
@@ -123,7 +123,7 @@ export default function Submissions({ setOpen, setSubmission, submissions, setGr
                       {submission.status === "Graded" ? (
                         <>
                           <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                            <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                            <span className="inline-flex items-center rounded bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                               {submission.status}
                             </span>
                           </td>
@@ -131,7 +131,7 @@ export default function Submissions({ setOpen, setSubmission, submissions, setGr
                       ) : submission.status === "In progress" ? (
                         <>
                           <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                            <span className="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
+                            <span className="inline-flex items-center rounded bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
                               {submission.status}
                             </span>
                           </td>

@@ -47,8 +47,8 @@ export default function ViewSubmission({
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative h-screen-90 w-full md:w-11/12 lg:w-5/6 my-0 md:my-10 bg-white rounded-md text-left shadow-xl transform transition-all">
-                  <div className="relative py-14 mx-auto rounded-md bg-white">
+                <Dialog.Panel className="relative h-screen-90 w-full md:w-11/12 lg:w-5/6 my-0 md:my-10 bg-white rounded text-left shadow-xl transform transition-all">
+                  <div className="relative py-14 mx-auto rounded bg-white">
                     <div className="flex flex-row">
                       <div className="absolute top-6 left-10">
                         <div className="flex flex-col md:flex-row">
@@ -106,7 +106,7 @@ export default function ViewSubmission({
                         </div>
 
                         {/* Grade of submission */}
-                        <Grade grade={grade} setGrade={setGrade} rubricArray={rubricArray} currentCriterion={currentCriterion} setCurrentCriterion={setCurrentCriterion} />
+                        <Grade setOpen={setOpen} grade={grade} setGrade={setGrade} rubricArray={rubricArray} currentCriterion={currentCriterion} setCurrentCriterion={setCurrentCriterion} />
 
                       </aside>
                     </div>
