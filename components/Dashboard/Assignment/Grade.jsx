@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
+import { MdCheckBoxOutlineBlank, MdCheckBox, MdEditNote } from "react-icons/md";
 import { FaRobot, FaUserGraduate } from "react-icons/fa";
 import CriterionDropdown from "./CriterionDropdown";
 
@@ -17,12 +17,10 @@ export default function Grade({
   currentCriterion,
   setCurrentCriterion,
 }) {
-
   const [criterionId, setCriterionId] = useState(0);
   const [selected, setSelected] = useState(rubricArray[criterionId].levels);
   const [aiSelected, setAiSelected] = useState("");
   const [userSelected, setUserSelected] = useState("");
-
 
   const setUserSelection = (e) => {
     setUserSelected(e);
@@ -34,9 +32,9 @@ export default function Grade({
     for (let i = 0; i < currentCriterion.length; i++) {
       let aiSelection = "";
       // console.log(
-      //   grade[criterionId].name,
-      //   grade[criterionId].score,
-      //   currentCriterion[i].score
+      //   // grade[criterionId].name,
+      //   // grade[criterionId].score,
+      //   // currentCriterion[i].score
       // );
       grade[criterionId].score === currentCriterion[i].score
         ? ((aiSelection = currentCriterion[i].score),
@@ -118,8 +116,8 @@ export default function Grade({
                             </p>
                           </div>
                         </div>
-                        {/* Show a blank checkbox if not selected */}
-                        <div className="">
+                        <div className="flex flex-col justify-between h-full">
+                          {/* Show a blank checkbox if not selected */}
                           <MdCheckBoxOutlineBlank
                             className={classNames(
                               checked |
@@ -147,6 +145,38 @@ export default function Grade({
                             )}
                             aria-hidden="true"
                           />
+                          {/* Show feedback icon with assessment if the AI selected this score */}
+                          <div className="group">
+                            <MdEditNote
+                              className={classNames(
+                                aiSelected === rating.score
+                                  ? ""
+                                  : "hidden",
+                                "h-6 w-6 text-gray-500"
+                              )}
+                              aria-hidden="true"
+                            />
+                            <div id="assessment" className="hidden group-hover:block absolute z-40 w-11/12 bottom-10 -left-2 p-4 bg-white border border-gray-300 shadow rounded">
+                              <h3 className="text-gray-900 text-lg font-semibold">Assessment:</h3>
+                              <p className="text-gray-700">{ grade[criterionId].assessment }</p>
+                            </div>
+                          </div>
+                          {/* Show feedback icon with blank text area if the User selected this score */}
+                          <div className="group">
+                            <MdEditNote
+                              className={classNames(
+                                checked
+                                  ? ""
+                                  : "hidden",
+                                "h-6 w-6 text-gray-500"
+                              )}
+                              aria-hidden="true"
+                            />
+                            <div id="assessment" className="hidden group-hover:block absolute z-40 w-11/12 bottom-10 -left-2 p-4 bg-white border border-gray-300 shadow rounded">
+                              <h3 className="text-gray-900 text-lg font-semibold">Assessment:</h3>
+                              <textarea placeholder="give feedback..." className="w-full text-gray-700 rounded"></textarea>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -174,8 +204,20 @@ export default function Grade({
         </RadioGroup>
         {/* Submit or cancel the grading */}
         <div className="flex flex-row w-full mt-10">
-          <div onClick={() => {setOpen(false)}} className="h-10 w-32 p-2 text-center font-semibold hover:font-regular text-sky-700 hover:text-white border border-sky-700 bg-white hover:bg-sky-600 shadow rounded cursor-pointer">Cancel</div>
-          <div onClick={() => {}} className="h-10 w-full ml-2 p-2 text-center bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer">Submit</div>
+          <div
+            onClick={() => {
+              setOpen(false);
+            }}
+            className="h-10 w-32 p-2 text-center font-semibold hover:font-regular text-sky-700 hover:text-white border border-sky-700 bg-white hover:bg-sky-600 shadow rounded cursor-pointer"
+          >
+            Cancel
+          </div>
+          <div
+            onClick={() => {}}
+            className="h-10 w-full ml-2 p-2 text-center bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
+          >
+            Submit
+          </div>
         </div>
       </div>
     </>
