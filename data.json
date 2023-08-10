@@ -17,7 +17,7 @@
       "grade": [
         {
           "name": "Big O",
-          "score": 3,
+          "score": 2,
           "assessment": "The student's solution for the Big O criterion is optimal and efficient. They employ a single loop and dynamic programming to achieve a time complexity of O(n) and constant space complexity, demonstrating a strong understanding of algorithmic efficiency."
         },
         {

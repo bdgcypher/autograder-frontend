@@ -143,7 +143,7 @@ export default function Submissions({ setOpen, setSubmission, submissions, setGr
                             setOpen(true);
                             setSubmission(submission);
                             setGrade(submission.grade);
-                            setCurrentCriterion(rubricArray[1].levels)
+                            setCurrentCriterion(rubricArray[0].levels)
                           }}
                           className="text-sky-600 hover:text-sky-900 cursor-pointer"
                         >
