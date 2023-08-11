@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { MdCheckBoxOutlineBlank, MdCheckBox, MdEditNote } from "react-icons/md";
+import { BsCheckLg, BsChevronUp } from "react-icons/bs";
+import { BiEditAlt } from "react-icons/bi";
 import { FaRobot, FaUserGraduate } from "react-icons/fa";
 import CriterionDropdown from "./CriterionDropdown";
 
@@ -21,13 +23,14 @@ export default function Grade({
   const [selected, setSelected] = useState(rubricArray[criterionId].levels);
   const [aiSelected, setAiSelected] = useState("");
   const [userSelected, setUserSelected] = useState("");
+  const [assessment, setAssessment] = useState("");
+  const [editing, setEditing] = useState(false);
 
   const setUserSelection = (e) => {
     setUserSelected(e);
   };
 
   // Automatically set a variable to represent the grade the AI has selected for the currently viewed criterion
-
   const setAiSelection = () => {
     for (let i = 0; i < currentCriterion.length; i++) {
       let aiSelection = "";
@@ -43,6 +46,42 @@ export default function Grade({
     }
   };
 
+  // Toggle editing the assessment for a given grade when the user clicks edit
+  const handleToggleEdit = () => {
+    setEditing(!editing);
+  };
+
+  // Adjust the height of the assessment text box to match the size of its contents
+  useEffect(() => {
+    const textarea = document.getElementById("assignmentTextarea");
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  });
+
+  // Update the assessment for a given grade after the user finishes editing
+  const handleAssessmentChange = (e) => {
+    setAssessment(e.target.value);
+  };
+
+    // Outline the Ai selected score for the first criterion and set the assessment to match
+  useEffect(() => {
+    setAiSelection();
+    setAssessment(grade[criterionId].assessment);
+  }, []);
+
+  // Rotate a section's arrow and expand the section to full size
+  const expandSection = (id) => {
+    const section = document.getElementById(id);
+    const arrow = document.getElementById(`${id}Arrow`);
+
+    arrow.classList.toggle("rotate-180");
+    section.classList.toggle("h-full");
+    section.classList.toggle("h-10");
+    section.classList.toggle("overflow-hidden");
+  };
+
   useEffect(() => {
     setAiSelection();
   });
@@ -50,18 +89,33 @@ export default function Grade({
   // Criterion component
 
   return (
-    <>
-      <div className="mt-10">
-        <h1 className="text-gray-900 font-bold text-xl">Criteria:</h1>
+    <div className="h-full">
+      <hr className="my-10 mx-auto w-5/6 text-gray-300 bg-gray-300" />
+      <div
+        id="criteria"
+        className="mt-10 h-full transition-all ease-in-out duration-100"
+      >
+        <div className="flex flex-row mb-4 justify-between">
+          <h1 className="text-gray-900 font-bold text-xl">Criteria:</h1>
+          <BsChevronUp
+            id="criteriaArrow"
+            className="h-5 w-5 text-gray-900 transition-all ease-in-out duration-300 cursor-pointer"
+            aria-hidden="true"
+            onClick={() => {
+              expandSection("criteria");
+            }}
+          />
+        </div>
 
         {/* Dropdown for selecting the viewed criterion ratings */}
 
         <CriterionDropdown
           rubricArray={rubricArray}
+          grade={grade}
           criterionId={criterionId}
-          currentCriterion={currentCriterion}
           setCurrentCriterion={setCurrentCriterion}
           setCriterionId={setCriterionId}
+          setAssessment={setAssessment}
         />
 
         {/* Criterion ratings and selected grade */}
@@ -145,38 +199,6 @@ export default function Grade({
                             )}
                             aria-hidden="true"
                           />
-                          {/* Show feedback icon with assessment if the AI selected this score */}
-                          <div className="group">
-                            <MdEditNote
-                              className={classNames(
-                                aiSelected === rating.score
-                                  ? ""
-                                  : "hidden",
-                                "h-6 w-6 text-gray-500"
-                              )}
-                              aria-hidden="true"
-                            />
-                            <div id="assessment" className="hidden group-hover:block absolute z-40 w-11/12 bottom-10 -left-2 p-4 bg-white border border-gray-300 shadow rounded">
-                              <h3 className="text-gray-900 text-lg font-semibold">Assessment:</h3>
-                              <p className="text-gray-700">{ grade[criterionId].assessment }</p>
-                            </div>
-                          </div>
-                          {/* Show feedback icon with blank text area if the User selected this score */}
-                          <div className="group">
-                            <MdEditNote
-                              className={classNames(
-                                checked
-                                  ? ""
-                                  : "hidden",
-                                "h-6 w-6 text-gray-500"
-                              )}
-                              aria-hidden="true"
-                            />
-                            <div id="assessment" className="hidden group-hover:block absolute z-40 w-11/12 bottom-10 -left-2 p-4 bg-white border border-gray-300 shadow rounded">
-                              <h3 className="text-gray-900 text-lg font-semibold">Assessment:</h3>
-                              <textarea placeholder="give feedback..." className="w-full text-gray-700 rounded"></textarea>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -202,6 +224,66 @@ export default function Grade({
             ))}
           </div>
         </RadioGroup>
+        {/* Assessment for why the selected score was chosen */}
+      </div>
+      <div className="py-10">
+        <div
+          id="assessment"
+          className="h-full transition-all ease-in-out duration-100"
+        >
+          <div className="flex flex-row mb-4 justify-between">
+            <h1 className="text-gray-900 font-bold text-xl">Assessment:</h1>
+            <BsChevronUp
+              id="assessmentArrow"
+              className="h-5 w-5 text-gray-900 transition-all ease-in-out duration-300"
+              aria-hidden="true"
+              onClick={() => {
+                expandSection("assessment");
+              }}
+            />
+          </div>
+          <div>
+            {editing ? (
+              <>
+                <textarea
+                  id="assignmentTextarea"
+                  className="w-full min-h-[1.5rem] h-auto resize-none text-gray-700 mb-4 rounded"
+                  value={assessment}
+                  onChange={handleAssessmentChange}
+                  onBlur={handleToggleEdit}
+                />
+                <div className="mt-4 -mr-4 sm:mt-0">
+                  <button
+                    onClick={handleToggleEdit}
+                    onMouseEnter={() => {setAssessment(assessment)}}
+                    type="button"
+                    className="flex flex-row p-2 text-center font-semibold hover:font-regular bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
+                  >
+                    Save
+                    <BsCheckLg className="ml-2 text-xl" />
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="w-full mb-4 p-2 text-gray-700 rounded">
+                  {assessment}
+                </p>
+                <div className="mt-4 -mr-4 sm:mt-0">
+                  <button
+                    onClick={handleToggleEdit}
+                    type="button"
+                    className="flex flex-row p-2 text-center font-semibold hover:font-regular bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
+                  >
+                    Edit
+                    <BiEditAlt className="ml-2 text-xl" />
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+        <hr className="my-10 mx-auto w-5/6 text-gray-300 bg-gray-300" />
         {/* Submit or cancel the grading */}
         <div className="flex flex-row w-full mt-10">
           <div
@@ -220,6 +302,6 @@ export default function Grade({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,22 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import { UserCircleIcon } from "@heroicons/react/20/solid";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function CriterionDropdown({ rubricArray, setCriterionId, currentCriterion, setCurrentCriterion, setGrade}) {
+export default function CriterionDropdown({ rubricArray, grade, criterionId, setCriterionId, setCurrentCriterion, setAssessment}) {
   const [selected, setSelected] = useState(rubricArray[0]);
+
+  // Update the displayed criterion data after a criterion is selected from the dropdown
 
   const handleChange = (e) => {
     setSelected(e);
     setCurrentCriterion(e.levels);
-    setCriterionId(rubricArray.indexOf(e))
+    setCriterionId(rubricArray.indexOf(e));
   }
 
+  // After the criterion data is updated, set the displayed Assessment to match
+
+  useEffect(() => {
+    if (criterionId !== null) {
+      setAssessment(grade[criterionId].assessment);
+    }
+  }, [criterionId]);
+
+  // Dropdown component
 
   return (
     <Listbox value={selected} onChange={handleChange}>
@@ -44,6 +54,7 @@ export default function CriterionDropdown({ rubricArray, setCriterionId, current
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                {/* map through the rubric and display all the criteria names */}
                 {rubricArray.map((criterion, index) => (
                   <Listbox.Option
                     key={index}

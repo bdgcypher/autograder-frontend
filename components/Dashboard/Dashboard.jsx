@@ -2,16 +2,10 @@
 
 import React, { useState } from "react";
 import jsonData from "/data.json";
-import { FiSettings } from "react-icons/fi";
-import { RiDashboard2Fill } from "react-icons/ri";
-import { MdOutlineDiamond, MdOutlinePeopleAlt } from "react-icons/md";
-import { BiPieChartAlt2 } from "react-icons/bi";
-import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
 
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import Assignment from "./Assignment/Assignment";
-import CreateAssignment from "./Assignment/CreateAssignment";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
