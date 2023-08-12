@@ -77,7 +77,7 @@ export default function Grade({
     const arrow = document.getElementById(`${id}Arrow`);
 
     arrow.classList.toggle("rotate-180");
-    section.classList.toggle("h-full");
+    section.classList.toggle("h-auto");
     section.classList.toggle("h-10");
     section.classList.toggle("overflow-hidden");
   };
@@ -93,7 +93,7 @@ export default function Grade({
       <hr className="my-10 mx-auto w-5/6 text-gray-300 bg-gray-300" />
       <div
         id="criteria"
-        className="mt-10 h-full transition-all ease-in-out duration-100"
+        className="mt-10 h-auto transition-all ease-in-out duration-100"
       >
         <div className="flex flex-row mb-4 justify-between">
           <h1 className="text-gray-900 font-bold text-xl">Criteria:</h1>

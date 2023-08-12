@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Dashboard from '@/components/Dashboard/Dashboard'
 

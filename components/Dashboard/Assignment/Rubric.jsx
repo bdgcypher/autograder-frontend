@@ -9,7 +9,7 @@ export default function Rubric({ rubricArray }) {
       <div className="px-2">
         <div className="">
           <div className="sm:flex-auto">
-            <div className="flex flex-row px-4 justify-betweensm:flex sm:items-center">
+            <div className="flex flex-row px-4 justify-between sm:flex sm:items-center">
               <div className="sm:flex-auto">
                 <div className="flex flex-row">
                   <div className="h-6 w-2 -ml-4 mr-4 bg-rose-400 rounded" />
