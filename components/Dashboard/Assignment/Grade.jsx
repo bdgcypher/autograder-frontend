@@ -69,6 +69,7 @@ export default function Grade({
   useEffect(() => {
     setAiSelection();
     setAssessment(grade[criterionId].assessment);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Rotate a section's arrow and expand the section to full size
@@ -139,7 +140,7 @@ export default function Grade({
                     {" "}
                     -{" "}
                     <FaUserGraduate className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                    User selected grade
+                    Faculty selected grade
                   </p>
                 </div>
               </div>

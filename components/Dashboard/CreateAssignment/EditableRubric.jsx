@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
+import { BsCheckLg } from "react-icons/bs";
 
 export default function EditableRubric() {
   const [tableData, setTableData] = useState([
@@ -88,15 +89,6 @@ export default function EditableRubric() {
                   <p className="mt-2 text-sm text-gray-700">
                     Criteria for this assignment.
                   </p>
-                </div>
-                <div className="mt-4 -mr-4 sm:mt-0">
-                  <button
-                    type="button"
-                    className="flex flex-row rounded bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-                  >
-                    Edit
-                    <BiEditAlt className="ml-2 text-xl" />
-                  </button>
                 </div>
               </div>
               <div className="">
@@ -195,7 +187,7 @@ export default function EditableRubric() {
                                 key={rowIndex + 5}
                                 className="flex-none w-14 py-4 text-center text-sm text-gray-900 font-bold sm:pr-0 border-b border-gray-300"
                               >
-                                ...
+                                Total...
                               </td>
                               {/* {rowIndex > 0 && (
                                 <div className="mt-4 text-gray-900 group cursor-pointer">
@@ -217,6 +209,15 @@ export default function EditableRubric() {
                           className="bg-blue-200 text-gray-700 font-semibold z-10 px-2 py-1 mb-10 -mr-6 my-auto rounded opacity-70 hover:opacity-100 cursor-pointer"
                         >
                           Criterion +
+                        </button>
+                      </div>
+                      <div className="relative mt-4 mb-10 float-right">
+                        <button
+                          type="button"
+                          className="flex flex-row rounded bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                        >
+                          Save
+                          <BsCheckLg className="ml-2 text-xl" />
                         </button>
                       </div>
                     </div>
