@@ -20,6 +20,7 @@ export default function Assignment({ dataArray }) {
   const [grade, setGrade] = useState([{}]);
   const [submission, setSubmission] = useState("");
   const [currentCriterion, setCurrentCriterion] = useState([{}]);
+  const [inferredGrade, setInferredGrade] = useState(true);
 
   return (
     <>
@@ -140,6 +141,8 @@ export default function Assignment({ dataArray }) {
           rubricArray={dataArray.rubric}
           currentCriterion={currentCriterion}
           setCurrentCriterion={setCurrentCriterion}
+          inferredGrade={inferredGrade}
+          setInferredGrade={setInferredGrade}
         />
       </main>
     </>

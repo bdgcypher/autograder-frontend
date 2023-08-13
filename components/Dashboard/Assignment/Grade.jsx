@@ -18,6 +18,8 @@ export default function Grade({
   rubricArray,
   currentCriterion,
   setCurrentCriterion,
+  inferredGrade,
+  setInferredGrade,
 }) {
   const [criterionId, setCriterionId] = useState(0);
   const [selected, setSelected] = useState(rubricArray[criterionId].levels);
@@ -30,7 +32,7 @@ export default function Grade({
     setUserSelected(e);
   };
 
-  // Automatically set a variable to represent the grade the AI has selected for the currently viewed criterion
+  // Set a variable to represent the grade the AI has selected for the currently viewed criterion
   const setAiSelection = () => {
     for (let i = 0; i < currentCriterion.length; i++) {
       let aiSelection = "";
@@ -65,11 +67,11 @@ export default function Grade({
     setAssessment(e.target.value);
   };
 
-    // Outline the Ai selected score for the first criterion and set the assessment to match
+  // Outline the Ai selected score for the first criterion and set the assessment to match
   useEffect(() => {
     setAiSelection();
     setAssessment(grade[criterionId].assessment);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Rotate a section's arrow and expand the section to full size
@@ -125,22 +127,43 @@ export default function Grade({
           <div className="space-y-3">
             <legend className="mb-10">
               <div className="flex flex-col">
-                <div className="flex flex-row">
-                  <div className="h-6 w-2 bg-sky-700 rounded" />
-                  <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
-                    {" "}
-                    -{" "}
-                    <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                    AI selected grade
-                  </p>
-                </div>
+                {inferredGrade ? (
+                  <>
+                    <div className="flex flex-row">
+                      <div className="h-6 w-2 bg-sky-700 rounded" />
+                      <p className="line-through flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
+                        {" "}
+                        -{" "}
+                        <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
+                        AI original grade
+                        <br />
+                      </p>
+                    </div>
+                    <div className="flex flex-row">
+                      <p className="flex flex-row ml-14 text-md font-semibold leading-6 text-gray-700">
+                        {" "}
+                        AI inferred grade: {grade[criterionId].score}
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex flex-row">
+                    <div className="h-6 w-2 bg-sky-700 rounded" />
+                    <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
+                      {" "}
+                      -{" "}
+                      <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
+                      AI selected grade
+                    </p>
+                  </div>
+                )}
                 <div className="mt-4 flex flex-row">
                   <div className="h-6 w-2 bg-rose-400 rounded" />
                   <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
                     {" "}
                     -{" "}
                     <FaUserGraduate className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                    Faculty selected grade
+                    Faculty selected grade: 
                   </p>
                 </div>
               </div>
@@ -171,7 +194,7 @@ export default function Grade({
                             </p>
                           </div>
                         </div>
-                        <div className="flex flex-col justify-between h-full">
+                        <div className="flex flex-col h-full">
                           {/* Show a blank checkbox if not selected */}
                           <MdCheckBoxOutlineBlank
                             className={classNames(
@@ -256,7 +279,9 @@ export default function Grade({
                 <div className="mt-4 -mr-4 sm:mt-0">
                   <button
                     onClick={handleToggleEdit}
-                    onMouseEnter={() => {setAssessment(assessment)}}
+                    onMouseEnter={() => {
+                      setAssessment(assessment);
+                    }}
                     type="button"
                     className="flex flex-row p-2 text-center font-semibold hover:font-regular bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
                   >
@@ -296,7 +321,10 @@ export default function Grade({
             Cancel
           </div>
           <div
-            onClick={() => {}}
+            onClick={() => {
+              setOpen(false);
+              setInferredGrade(true);
+            }}
             className="h-10 w-full ml-2 p-2 text-center bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
           >
             Submit

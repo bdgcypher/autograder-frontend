@@ -19,6 +19,8 @@ export default function ViewSubmission({
   rubricArray,
   currentCriterion,
   setCurrentCriterion,
+  inferredGrade,
+  setInferredGrade,
 }) {
   return (
     <div>
@@ -96,6 +98,8 @@ export default function ViewSubmission({
                         rubricArray={rubricArray}
                         currentCriterion={currentCriterion}
                         setCurrentCriterion={setCurrentCriterion}
+                        inferredGrade={inferredGrade}
+                        setInferredGrade={setInferredGrade}
                       />
                     </aside>
                   </div>
