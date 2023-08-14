@@ -135,7 +135,7 @@ export default function Grade({
                         {" "}
                         -{" "}
                         <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                        AI original grade
+                        AI original grade: {grade[criterionId].score - 1}
                         <br />
                       </p>
                     </div>
@@ -163,7 +163,7 @@ export default function Grade({
                     {" "}
                     -{" "}
                     <FaUserGraduate className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                    Faculty selected grade: 
+                    Faculty selected grade
                   </p>
                 </div>
               </div>

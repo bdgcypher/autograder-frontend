@@ -20,7 +20,7 @@ export default function Assignment({ dataArray }) {
   const [grade, setGrade] = useState([{}]);
   const [submission, setSubmission] = useState("");
   const [currentCriterion, setCurrentCriterion] = useState([{}]);
-  const [inferredGrade, setInferredGrade] = useState(true);
+  const [inferredGrade, setInferredGrade] = useState(false);
 
   return (
     <>
@@ -29,12 +29,12 @@ export default function Assignment({ dataArray }) {
       <main
         className={classNames(
           open ? "h-0 overflow-hidden" : "",
-          "mt-10 lg:col-span-11"
+          "mt-14 lg:col-span-11"
         )}
       >
         <div className="flex justify-between px-4 sm:px-0">
           <div className="text-xl md:text-3xl text-gray-900 font-bold">
-            Assignment 1
+            {dataArray.assignment[0].title}
           </div>
           <div className="flex p-1 md:p-2 text-sm md:text-md font-bold text-sky-700 rounded">
             Published

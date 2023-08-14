@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BiEditAlt } from "react-icons/bi";
 import { BsCheckLg } from "react-icons/bs";
 
-export default function EditableRubric() {
+export default function CreateRubric({ setBreadcrumbData }) {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   const [tableData, setTableData] = useState([
-    ["..."],
-    ["..."],
+    ["Criterion...", "rating...", "Total..."],
+    ["Criterion...", "rating...", "Total..."],
     // ... additional rows ...
   ]);
 
@@ -20,14 +23,17 @@ export default function EditableRubric() {
   const longestRowLength = Math.max(...tableData.map((row) => row.length));
 
   const handleAddRow = () => {
-    const newRow = Array.from({ length: 1 }, () => "...");
+    const newRow = ["Criterion...", "rating...", "Total"];
     setTableData([...tableData, newRow]);
   };
 
   const handleAddColumn = (rowIndex) => {
     const updatedTableData = tableData.map((row, index) => {
       if (index === rowIndex) {
-        return [...row, "..."];
+        const newRow = [...row];
+        const lastColumnIndex = newRow.length - 1;
+        newRow.splice(lastColumnIndex, 0, "rating...");
+        return newRow;
       } else {
         return row;
       }
@@ -72,6 +78,7 @@ export default function EditableRubric() {
     }
   }, [editedCell]);
 
+
   return (
     <div className="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-6xl w-screen mx-auto p-4">
       <div className="mt-10 p-4 bg-white rounded shadow-md">
@@ -113,7 +120,7 @@ export default function EditableRubric() {
                             </th>
                             <th
                               scope="col"
-                              className="w-14 py-3.5 pl-2 pr-2 text-sm font-semibold bg-rose-200 text-gray-900 rounded-tr"
+                              className="w-28 py-3.5 pl-2 pr-2 text-sm font-semibold bg-rose-200 text-gray-900 rounded-tr"
                             >
                               Total
                             </th>
@@ -125,18 +132,18 @@ export default function EditableRubric() {
                               key={rowIndex}
                               className="flex divide-x divide-y divide-gray-300"
                             >
-                              <td
-                                key={rowIndex + 1}
-                                className="flex-none w-28 lg:w-32 py-4 pl-2 pr-4 text-sm font-medium text-gray-900 border-b border-gray-300"
-                              >
-                                Criterion...
-                              </td>
                               {row.map((cell, columnIndex) => (
                                 <td
                                   key={columnIndex}
-                                  className="w-full border relative text-sm text-gray-500"
+                                  className={classNames(
+                                    columnIndex === 0
+                                      ? "flex-none w-28 lg:w-32 text-sm font-medium text-gray-900 border-b border-gray-300"
+                                      : columnIndex === row.length - 1
+                                      ? "flex-none w-28 text-center text-sm text-gray-900 font-bold sm:pr-0 border-b border-gray-300"
+                                      : "w-full border relative text-sm text-gray-500"
+                                  )}
                                 >
-                                  <div className="relative w-full h-full px-6 py-1 flex flex-row justify-between">
+                                  <div className="relative w-full h-full px-1 py-1 flex flex-row justify-between">
                                     {editedCell.rowIndex === rowIndex &&
                                     editedCell.columnIndex === columnIndex ? (
                                       <input
@@ -169,13 +176,14 @@ export default function EditableRubric() {
                                         {cell}
                                       </div>
                                     )}
-                                    {columnIndex === row.length - 1 &&
+                                    {columnIndex === row.length - 2 &&
                                       rowIndex >= 0 && (
                                         <button
-                                          onClick={() =>
+                                          onClick={() => {
                                             handleAddColumn(rowIndex)
+                                          }
                                           } // Pass the rowIndex
-                                          className="bg-sky-200 text-gray-700 font-semibold z-10 h-8 w-8 -mr-10 mt-1 rounded-full opacity-70 hover:opacity-100"
+                                          className="bg-sky-200 text-gray-700 font-semibold z-10 h-8 w-8 -mr-5 mt-1 rounded-full opacity-70 hover:opacity-100"
                                         >
                                           +
                                         </button>
@@ -183,12 +191,6 @@ export default function EditableRubric() {
                                   </div>
                                 </td>
                               ))}
-                              <td
-                                key={rowIndex + 5}
-                                className="flex-none w-14 py-4 text-center text-sm text-gray-900 font-bold sm:pr-0 border-b border-gray-300"
-                              >
-                                Total...
-                              </td>
                               {/* {rowIndex > 0 && (
                                 <div className="mt-4 text-gray-900 group cursor-pointer">
                                   <button
@@ -214,6 +216,7 @@ export default function EditableRubric() {
                       <div className="relative mt-4 mb-10 float-right">
                         <button
                           type="button"
+                          onClick={() => setBreadcrumbData("")}
                           className="flex flex-row rounded bg-sky-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                         >
                           Save

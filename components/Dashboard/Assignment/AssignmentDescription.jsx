@@ -66,7 +66,7 @@ export default function AssignmentDescription({ assignment }) {
                           __html: assignment.body,
                         }}
                       /> */}
-                      <pre className="mt-2 p-4 pb-20 space-y-4 text-sm text-gray-700 whitespace-pre-wrap">{assignment.body}</pre>
+                      <pre className="mt-2 p-4 pb-20 space-y-4 text-sm text-gray-700 whitespace-pre-wrap">{assignment.description}</pre>
                     </div>
                   </div>
                 </article>

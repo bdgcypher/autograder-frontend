@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       height: {
         "screen-90": "90vh",
+        "screen-85": "85vh",
+        "screen-80": "80vh",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
