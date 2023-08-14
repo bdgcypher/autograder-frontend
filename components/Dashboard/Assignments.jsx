@@ -13,8 +13,8 @@ export default function Assignments({
   return (
     <>
       {/* Assignments container */}
-      <div className="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-6xl w-screen mx-auto p-4">
-        <main className="mt-14 lg:col-span-11">
+      <div className="lg:col-span-11">
+        <main className="w-full mt-14 lg:col-span-11">
           <div className="flex justify-between px-4 sm:px-0">
             <div className="text-xl md:text-3xl text-gray-900 font-bold">
               Dashboard

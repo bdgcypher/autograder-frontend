@@ -26,7 +26,7 @@ export default function Dashboard() {
         <Navbar />
 
         <div className="h-full pb-10 bg-slate-50">
-          <div className="mx-auto h-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-full px-0 lg:grid lg:grid-cols-12 lg:gap-8">
+          <div className="mx-auto h-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-full pr-0 md:pr-4 lg:pr-10 lg:grid lg:grid-cols-12 lg:gap-8">
             <Sidebar />
             <Breadcrumbs currentBreadcrumb={breadcrumbData} setBreadcrumbData={setBreadcrumbData} />
             {breadcrumbData === "" ? (

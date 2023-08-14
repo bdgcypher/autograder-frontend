@@ -79,7 +79,7 @@ export default function CreateRubric({ setBreadcrumbData }) {
 
 
   return (
-    <div className="max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-6xl w-screen mx-auto p-4">
+    <div className="w-full">
       <div className="mt-10 p-4 bg-white rounded shadow-md">
         <div className="px-2">
           <div className="">

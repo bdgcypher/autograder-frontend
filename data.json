@@ -19,31 +19,37 @@
         {
           "name": "Big O",
           "score": 2,
+          "inferredScore": null,
           "assessment": "The student's solution for the Big O criterion is optimal and efficient. They employ a single loop and dynamic programming to achieve a time complexity of O(n) and constant space complexity, demonstrating a strong understanding of algorithmic efficiency."
         },
         {
           "name": "Validity",
           "score": 1,
+          "inferredScore": null,
           "assessment": "The student's solution for the Validity criterion is valid, correctly handling edge cases and finding the largest sum of non-adjacent numbers. However, it does not handle repeated elements, which limits its ability to handle all cases."
         },
         {
           "name": "Organization",
           "score": 3,
+          "inferredScore": null,
           "assessment": "The student has demonstrated a strong understanding of code organization. The functions and variables are well-named, and the code is easy to read and understand. However, additional comments could enhance clarity and improve maintainability."
         },
         {
           "name": "Comments",
           "score": 2,
+          "inferredScore": null,
           "assessment": "The student's submission receives a level 2 for the Comments criterion as it includes a necessary docstring but lacks inline comments to explain complex sections of the code and provide further clarity on the algorithm."
         },
         {
           "name": "Documentation",
           "score": 2,
+          "inferredScore": null,
           "assessment": "The student's documentation level for the `largest_adjacent_sum` function is at a high level. The function is well-documented with a clear and descriptive docstring that explains the purpose, arguments, and return value. However, they did not document other functions within their code, which prevented them from achieving a higher level."
         },
         {
           "name": "Naming",
           "score": 1,
+          "inferredScore": null,
           "assessment": "The student's submission adequately meets the Naming criterion by having clear and meaningful names for functions and variables. However, there is room for improvement in terms of consistency with Python's naming conventions, which would have resulted in a higher level achievement in the criterion."
         }
       ]
@@ -58,32 +64,38 @@
       "grade": [
         {
           "name": "Big O",
-          "score": 3,
+          "score": 1,
+          "inferredScore": 3,
           "assessment": "The students solution provided is O(N) time and constant space complexity."
         },
         {
           "name": "Validity",
           "score": 1,
+          "inferredScore": null,
           "assessment": "The assignment wanted the result of the largest possible sum. Returning zero when nothing in the list can sum to zero is not following specifications. If all possible sums are negative, the smallest negative sum should be output."
         },
         {
           "name": "Organization",
           "score": 2,
+          "inferredScore": null,
           "assessment": "The code is organized and concise. Most functions and variables are well named."
         },
         {
           "name": "Comments",
           "score": 2,
+          "inferredScore": null,
           "assessment": "The code is very readable, however a comment should exist explaining the algorithm. This could also be included in a doc string, which would remove the need for inline comments (when the code is this simple), however no doc string was present."
         },
         {
           "name": "Documentation",
           "score": 0,
+          "inferredScore": null,
           "assessment": "No functions are documented."
         },
         {
           "name": "Naming",
           "score": 2,
+          "inferredScore": null,
           "assessment": "All functions and variables are well named."
         }
       ]

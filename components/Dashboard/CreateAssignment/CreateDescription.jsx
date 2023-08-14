@@ -49,7 +49,7 @@ export default function CreateDescription() {
 
   return (
     <>
-      <main className="mt-10 max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-6xl w-screen mx-auto p-4">
+      <main className="w-full">
         <form action="#" className="relative mt-4 bg-white">
           <div className="overflow-hidden rounded-lg shadow-md outline-none focus:ring-none">
             <div className="flex flex-row px-4 justify-between sm:flex sm:items-center">

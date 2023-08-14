@@ -36,7 +36,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className="hidden lg:block z-10 group min-h-full h-screen-85 w-20 hover:w-60 transition-all ease-in-out duration-300 p-4 bg-white shadow">
+      <div className="hidden lg:block z-10 group min-h-full h-screen-85 w-16 hover:w-60 transition-all ease-in-out duration-300 p-3 bg-white shadow">
         <nav
           aria-label="Sidebar"
           className="sticky top-4 divide-y divide-gray-300"

@@ -24,29 +24,37 @@ export default function Grade({
   const [criterionId, setCriterionId] = useState(0);
   const [selected, setSelected] = useState(rubricArray[criterionId].levels);
   const [aiSelected, setAiSelected] = useState("");
-  const [userSelected, setUserSelected] = useState("");
+  const [aiInferred, setAiInferred] = useState("");
+  const [userSelected, setUserSelected] = useState(false);
   const [assessment, setAssessment] = useState("");
   const [editing, setEditing] = useState(false);
-
-  const setUserSelection = (e) => {
-    setUserSelected(e);
-  };
 
   // Set a variable to represent the grade the AI has selected for the currently viewed criterion
   const setAiSelection = () => {
     for (let i = 0; i < currentCriterion.length; i++) {
       let aiSelection = "";
-      // console.log(
-      //   // grade[criterionId].name,
-      //   // grade[criterionId].score,
-      //   // currentCriterion[i].score
-      // );
       grade[criterionId].score === currentCriterion[i].score
         ? ((aiSelection = currentCriterion[i].score),
           setAiSelected(aiSelection))
         : null;
     }
   };
+
+  // Set a variable to represent the grade the AI inferred from previous faculty override for the currently viewed criterion
+  const setInferredAiSelection = () => {
+    for (let i = 0; i < currentCriterion.length; i++) {
+      let aiInferredSelection = "";
+      grade[criterionId].inferredScore === currentCriterion[i].score
+        ? ((aiInferredSelection = currentCriterion[i].score),
+          setAiInferred(aiInferredSelection))
+        : null;
+    }
+  };
+
+  // Outline the AI inferred grade if a faculty has made an override
+  useEffect(() => {
+    setInferredAiSelection();
+  }, []);
 
   // Toggle editing the assessment for a given grade when the user clicks edit
   const handleToggleEdit = () => {
@@ -131,20 +139,25 @@ export default function Grade({
                   <>
                     <div className="flex flex-row">
                       <div className="h-6 w-2 bg-sky-700 rounded" />
-                      <p className="line-through flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
+                      <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
                         {" "}
                         -{" "}
                         <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                        AI original grade: {grade[criterionId].score - 1}
+                        AI original grade
                         <br />
                       </p>
                     </div>
-                    <div className="flex flex-row">
-                      <p className="flex flex-row ml-14 text-md font-semibold leading-6 text-gray-700">
-                        {" "}
-                        AI inferred grade: {grade[criterionId].score}
-                      </p>
-                    </div>
+                    {grade[criterionId].inferredScore != null ? (
+                      <div className="flex flex-row mt-4">
+                        <div className="h-6 w-2 bg-indigo-400 rounded" />
+                        <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
+                          {" "}
+                          -{" "}
+                          <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
+                          AI inferred grade
+                        </p>
+                      </div>
+                    ) : null}
                   </>
                 ) : (
                   <div className="flex flex-row">
@@ -157,7 +170,12 @@ export default function Grade({
                     </p>
                   </div>
                 )}
-                <div className="mt-4 flex flex-row">
+                <div
+                  className={classNames(
+                    userSelected ? "" : "hidden",
+                    "mt-4 flex flex-row"
+                  )}
+                >
                   <div className="h-6 w-2 bg-rose-400 rounded" />
                   <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
                     {" "}
@@ -173,6 +191,7 @@ export default function Grade({
               <RadioGroup.Option
                 key={rating.name}
                 value={rating}
+                onClick={setUserSelected}
                 className={({ active }) =>
                   classNames(
                     active ? "" : "border border-gray-300",
@@ -200,7 +219,8 @@ export default function Grade({
                             className={classNames(
                               checked |
                                 (aiSelected === rating.score) |
-                                (userSelected === rating.score)
+                                (aiInferred === rating.score) |
+                                (userSelected === rating.score) 
                                 ? "hidden"
                                 : "",
                               "h-5 w-5 text-gray-300"
@@ -215,7 +235,15 @@ export default function Grade({
                             )}
                             aria-hidden="true"
                           />
-                          {/* Show a rose checkbox if the User selected this score */}
+                          {/* Show a purple checkbox if the AI inferred this score after faculty override */}
+                          <MdCheckBox
+                            className={classNames(
+                              aiInferred === rating.score ? "" : "hidden",
+                              "h-5 w-5 text-indigo-400"
+                            )}
+                            aria-hidden="true"
+                          />
+                          {/* Show a rose checkbox if the Faculty selected this score */}
                           <MdCheckBox
                             className={classNames(
                               checked ? "" : "hidden",
@@ -233,8 +261,16 @@ export default function Grade({
                         "pointer-events-none absolute -inset-px rounded border-2 border-sky-700"
                       )}
                       aria-hidden="true"
+                      />
+                    {/* Outline in purple if the Ai inferred this score from previous faculty override */}
+                    <span
+                      className={classNames(
+                        aiInferred === rating.score ? "" : "hidden",
+                        "pointer-events-none absolute -inset-px rounded border-2 border-indigo-400"
+                      )}
+                      aria-hidden="true"
                     />
-                    {/* Outline in rose if the User selected this score */}
+                    {/* Outline in rose if the Faculty selected this score */}
                     <span
                       className={classNames(
                         checked ? "" : "hidden",
@@ -323,7 +359,7 @@ export default function Grade({
           <div
             onClick={() => {
               setOpen(false);
-              setInferredGrade(true);
+              userSelected ? setInferredGrade(true) : null;
             }}
             className="h-10 w-full ml-2 p-2 text-center bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
           >
