@@ -41,7 +41,7 @@ export default function Grade({
   };
 
   // Set a variable to represent the grade the AI inferred from previous faculty override for the currently viewed criterion
-  const setInferredAiSelection = () => {
+  const setAiInferredSelection = () => {
     for (let i = 0; i < currentCriterion.length; i++) {
       let aiInferredSelection = "";
       grade[criterionId].inferredScore === currentCriterion[i].score
@@ -50,11 +50,6 @@ export default function Grade({
         : null;
     }
   };
-
-  // Outline the AI inferred grade if a faculty has made an override
-  useEffect(() => {
-    setInferredAiSelection();
-  }, []);
 
   // Toggle editing the assessment for a given grade when the user clicks edit
   const handleToggleEdit = () => {
@@ -76,9 +71,12 @@ export default function Grade({
   };
 
   // Outline the Ai selected score for the first criterion and set the assessment to match
+  // Outline the AI inferred grade if a faculty has made an override
   useEffect(() => {
     setAiSelection();
     setAssessment(grade[criterionId].assessment);
+
+    setAiInferredSelection();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -95,6 +93,7 @@ export default function Grade({
 
   useEffect(() => {
     setAiSelection();
+    setAiInferredSelection();
   });
 
   // Criterion component
@@ -137,27 +136,40 @@ export default function Grade({
               <div className="flex flex-col">
                 {inferredGrade ? (
                   <>
-                    <div className="flex flex-row">
-                      <div className="h-6 w-2 bg-sky-700 rounded" />
-                      <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
-                        {" "}
-                        -{" "}
-                        <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                        AI original grade
-                        <br />
-                      </p>
-                    </div>
                     {grade[criterionId].inferredScore != null ? (
-                      <div className="flex flex-row mt-4">
-                        <div className="h-6 w-2 bg-indigo-400 rounded" />
+                      <>
+                        <div className="flex flex-row">
+                          <div className="h-6 w-2 bg-sky-700 rounded" />
+                          <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
+                            {" "}
+                            -{" "}
+                            <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
+                            AI original grade
+                            <br />
+                          </p>
+                        </div>
+                        <div className="flex flex-row mt-4">
+                          <div className="h-6 w-2 bg-indigo-400 rounded" />
+                          <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
+                            {" "}
+                            -{" "}
+                            <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
+                            AI inferred grade
+                          </p>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex flex-row">
+                        <div className="h-6 w-2 bg-sky-700 rounded" />
                         <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
                           {" "}
                           -{" "}
                           <FaRobot className="mx-2 my-auto text-lg font-semibold leading-6 text-gray-700" />
-                          AI inferred grade
+                          AI selected grade
+                          <br />
                         </p>
                       </div>
-                    ) : null}
+                    )}
                   </>
                 ) : (
                   <div className="flex flex-row">
@@ -220,7 +232,7 @@ export default function Grade({
                               checked |
                                 (aiSelected === rating.score) |
                                 (aiInferred === rating.score) |
-                                (userSelected === rating.score) 
+                                (userSelected === rating.score)
                                 ? "hidden"
                                 : "",
                               "h-5 w-5 text-gray-300"
@@ -238,7 +250,7 @@ export default function Grade({
                           {/* Show a purple checkbox if the AI inferred this score after faculty override */}
                           <MdCheckBox
                             className={classNames(
-                              aiInferred === rating.score ? "" : "hidden",
+                              aiInferred === rating.score && grade[criterionId].inferredScore != null ? "" : "hidden",
                               "h-5 w-5 text-indigo-400"
                             )}
                             aria-hidden="true"
@@ -261,11 +273,11 @@ export default function Grade({
                         "pointer-events-none absolute -inset-px rounded border-2 border-sky-700"
                       )}
                       aria-hidden="true"
-                      />
+                    />
                     {/* Outline in purple if the Ai inferred this score from previous faculty override */}
                     <span
                       className={classNames(
-                        aiInferred === rating.score ? "" : "hidden",
+                        aiInferred === rating.score && grade[criterionId].inferredScore != null ? "" : "hidden",
                         "pointer-events-none absolute -inset-px rounded border-2 border-indigo-400"
                       )}
                       aria-hidden="true"
