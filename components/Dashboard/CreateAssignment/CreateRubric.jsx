@@ -8,7 +8,6 @@ export default function CreateRubric({ setBreadcrumbData }) {
 
   const [tableData, setTableData] = useState([
     ["Criterion...", "rating...", "Total..."],
-    ["Criterion...", "rating...", "Total..."],
     // ... additional rows ...
   ]);
 
