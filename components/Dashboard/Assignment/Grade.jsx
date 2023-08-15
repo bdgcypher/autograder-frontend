@@ -149,7 +149,7 @@ export default function Grade({
                           </p>
                         </div>
                         <div className="flex flex-row mt-4">
-                          <div className="h-6 w-2 bg-indigo-400 rounded" />
+                          <div className="h-6 w-2 bg-green-400 rounded" />
                           <p className="flex flex-row ml-2 text-md font-semibold leading-6 text-gray-700">
                             {" "}
                             -{" "}
@@ -247,11 +247,11 @@ export default function Grade({
                             )}
                             aria-hidden="true"
                           />
-                          {/* Show a purple checkbox if the AI inferred this score after faculty override */}
+                          {/* Show a green checkbox if the AI inferred this score after faculty override */}
                           <MdCheckBox
                             className={classNames(
                               aiInferred === rating.score && grade[criterionId].inferredScore != null ? "" : "hidden",
-                              "h-5 w-5 text-indigo-400"
+                              "h-5 w-5 text-green-400"
                             )}
                             aria-hidden="true"
                           />
@@ -274,11 +274,11 @@ export default function Grade({
                       )}
                       aria-hidden="true"
                     />
-                    {/* Outline in purple if the Ai inferred this score from previous faculty override */}
+                    {/* Outline in green if the Ai inferred this score from previous faculty override */}
                     <span
                       className={classNames(
                         aiInferred === rating.score && grade[criterionId].inferredScore != null ? "" : "hidden",
-                        "pointer-events-none absolute -inset-px rounded border-2 border-indigo-400"
+                        "pointer-events-none absolute -inset-px rounded border-2 border-green-400"
                       )}
                       aria-hidden="true"
                     />
