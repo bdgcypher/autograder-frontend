@@ -3,7 +3,7 @@
         {
             "id": "1",
             "title": "Game of Life",
-            "total_points": 300,
+            "totalPoints": 300,
             "description": "Implement a function called conway_game that takes two parameters: a 2D array of 0s and 1s, and an integer t. The function\nshould use the 2D array as the start state to Conway's Game of Life, and return the state of the game after t steps. \nThe size and shape of the 2d array will vary, but you can assume that it will have at least one row and one column.\n\nConways's Game of Life\n\nThe \u201cgame\u201d is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input.\n\nHow the game works \nBecause the Game of Life is built on a grid of nine squares, every cell has eight neighboring cells,as shown in the given figure. \nA given cell (i, j) in the simulation is accessed on a grid [i][j], where i and j are the row and column indices, respectively.\nThe value of a given cell at a given instant of time depends on the state of its neighbors at the previous time step.\nConway\u2019s Game of Life has four rules. \n\nIf a cell is ON and has fewer than two neighbors that are ON, it turns OFF\nIf a cell is ON and has either two or three neighbors that are ON, it remains ON.\nIf a cell is ON and has more than three neighbors that are ON, it turns OFF.\nIf a cell is OFF and has exactly three neighbors that are ON, it turns ON."
         }
     ],

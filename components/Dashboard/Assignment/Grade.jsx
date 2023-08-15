@@ -20,12 +20,14 @@ export default function Grade({
   setCurrentCriterion,
   inferredGrade,
   setInferredGrade,
+  setGradedRubricOpen,
+  userSelected,
+  setUserSelected,
 }) {
   const [criterionId, setCriterionId] = useState(0);
   const [selected, setSelected] = useState(rubricArray[criterionId].levels);
   const [aiSelected, setAiSelected] = useState("");
   const [aiInferred, setAiInferred] = useState("");
-  const [userSelected, setUserSelected] = useState(false);
   const [assessment, setAssessment] = useState("");
   const [editing, setEditing] = useState(false);
 
@@ -370,12 +372,13 @@ export default function Grade({
           </div>
           <div
             onClick={() => {
+              setGradedRubricOpen(true);
               setOpen(false);
-              userSelected ? setInferredGrade(true) : null;
+              // userSelected ? setInferredGrade(true) : null;
             }}
             className="h-10 w-full ml-2 p-2 text-center text-white bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
           >
-            Submit
+            Next
           </div>
         </div>
       </div>

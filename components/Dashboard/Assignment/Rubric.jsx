@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import react, { useState } from "react";
-import { UserCircleIcon } from "@heroicons/react/20/solid";
-import { BiDotsVerticalRounded, BiEditAlt } from "react-icons/bi";
+import { BiEditAlt } from "react-icons/bi";
 
 export default function Rubric({ rubricArray }) {
   return (
-    <div className="mt-10 p-4 bg-white rounded-xl shadow-md">
+    <div className="mt-10 p-4 bg-white rounded shadow-md">
       <div className="px-2">
         <div className="">
           <div className="sm:flex-auto">

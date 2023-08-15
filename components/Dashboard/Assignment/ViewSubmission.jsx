@@ -21,6 +21,9 @@ export default function ViewSubmission({
   setCurrentCriterion,
   inferredGrade,
   setInferredGrade,
+  setGradedRubricOpen,
+  userSelected,
+  setUserSelected,
 }) {
   return (
     <div>
@@ -73,7 +76,7 @@ export default function ViewSubmission({
 
                     {/* Secondary column (hidden on smaller screens) */}
 
-                    <aside className="fixed mt-20 inset-y-0 right-0 hidden w-96 border-l border-gray-200 px-4 py-6 lg:block overflow-y-scroll">
+                    <aside className="fixed mt-20 inset-y-0 right-0 hidden h-full w-96 border-l border-gray-200 px-4 py-6 lg:block overflow-y-scroll">
                       {/* Select which submission you are viewing with the dropdown */}
                       <SubmissionDropdown
                         submission={submission}
@@ -100,6 +103,9 @@ export default function ViewSubmission({
                         setCurrentCriterion={setCurrentCriterion}
                         inferredGrade={inferredGrade}
                         setInferredGrade={setInferredGrade}
+                        setGradedRubricOpen={setGradedRubricOpen}
+                        userSelected={userSelected}
+                        setUserSelected={setUserSelected}
                       />
                     </aside>
                   </div>

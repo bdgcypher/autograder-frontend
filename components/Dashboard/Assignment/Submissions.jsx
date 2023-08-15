@@ -28,7 +28,7 @@ export default function Submissions({ setOpen, setSubmission, submissions, setGr
 
 
   return (
-    <div className="mt-10 p-4 bg-white rounded-xl shadow-md">
+    <div className="mt-10 p-4 bg-white rounded shadow-md">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">

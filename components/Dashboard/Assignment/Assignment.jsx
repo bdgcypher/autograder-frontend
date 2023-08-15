@@ -10,6 +10,7 @@ import AssignmentDescription from "./AssignmentDescription";
 import Submissions from "./Submissions";
 import Rubric from "./Rubric";
 import ViewSubmission from "./ViewSubmission";
+import GradedRubric from "./GradedRubric";
 
 export default function Assignment({ dataArray }) {
   function classNames(...classes) {
@@ -21,6 +22,8 @@ export default function Assignment({ dataArray }) {
   const [submission, setSubmission] = useState("");
   const [currentCriterion, setCurrentCriterion] = useState([{}]);
   const [inferredGrade, setInferredGrade] = useState(false);
+  const [gradedRubricOpen, setGradedRubricOpen] = useState(false);
+  const [userSelected, setUserSelected] = useState(false);
 
   return (
     <>
@@ -28,7 +31,7 @@ export default function Assignment({ dataArray }) {
 
       <main
         className={classNames(
-          open ? "h-0 overflow-hidden" : "",
+          open ? "h-0 overflow-hidden" : gradedRubricOpen ? "h-0 overflow-hidden" : "",
           "mt-14 lg:col-span-11"
         )}
       >
@@ -143,6 +146,22 @@ export default function Assignment({ dataArray }) {
           setCurrentCriterion={setCurrentCriterion}
           inferredGrade={inferredGrade}
           setInferredGrade={setInferredGrade}
+          setGradedRubricOpen={setGradedRubricOpen}
+          userSelected={userSelected}
+          setUserSelected={setUserSelected}
+        />
+
+        {/* Graded Rubric popup */}
+
+        <GradedRubric
+          setOpen={setOpen}
+          gradedRubricOpen={gradedRubricOpen}
+          setGradedRubricOpen={setGradedRubricOpen}
+          grade={grade}
+          setInferredGrade={setInferredGrade}
+          rubricArray={dataArray.rubric}
+          totalPoints={dataArray.assignment.totalPoints}
+          userSelected={userSelected}
         />
       </main>
     </>
