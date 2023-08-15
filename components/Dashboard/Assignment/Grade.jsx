@@ -250,7 +250,7 @@ export default function Grade({
                           {/* Show a green checkbox if the AI inferred this score after faculty override */}
                           <MdCheckBox
                             className={classNames(
-                              aiInferred === rating.score && grade[criterionId].inferredScore != null ? "" : "hidden",
+                              aiInferred === rating.score && inferredGrade && grade[criterionId].inferredScore != null ? "" : "hidden",
                               "h-5 w-5 text-green-400"
                             )}
                             aria-hidden="true"
@@ -277,7 +277,7 @@ export default function Grade({
                     {/* Outline in green if the Ai inferred this score from previous faculty override */}
                     <span
                       className={classNames(
-                        aiInferred === rating.score && grade[criterionId].inferredScore != null ? "" : "hidden",
+                        aiInferred === rating.score && inferredGrade && grade[criterionId].inferredScore != null ? "" : "hidden",
                         "pointer-events-none absolute -inset-px rounded border-2 border-green-400"
                       )}
                       aria-hidden="true"
