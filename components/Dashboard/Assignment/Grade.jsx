@@ -347,7 +347,7 @@ export default function Grade({
                   <button
                     onClick={handleToggleEdit}
                     type="button"
-                    className="flex flex-row p-2 text-center font-semibold hover:font-regular bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
+                    className="flex flex-row p-2 text-center text-white font-semibold hover:font-regular bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
                   >
                     Edit
                     <BiEditAlt className="ml-2 text-xl" />
@@ -373,7 +373,7 @@ export default function Grade({
               setOpen(false);
               userSelected ? setInferredGrade(true) : null;
             }}
-            className="h-10 w-full ml-2 p-2 text-center bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
+            className="h-10 w-full ml-2 p-2 text-center text-white bg-sky-700 hover:bg-sky-600 shadow rounded cursor-pointer"
           >
             Submit
           </div>
