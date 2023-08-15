@@ -1,0 +1,208 @@
+{
+  "assignment": [
+    {
+      "id": "1",
+      "title": "Python code assignment",
+      "totalPoints": "15",
+      "description": "Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.\n\nFor example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1, 1, 5] should return 10, since we pick 5 and 5.\n\nFollow-up: Can you do this in O(N) time and constant space?\n\nFor your submission, create a python function which accepts a single list of integers and/or floats."
+    }
+  ],
+  "submissions": [
+    {
+      "name": "Lindsay Walton",
+      "email": "lindsay.walton@example.com",
+      "submittedOn": "04/27/2023 - 10:23am",
+      "status": "Graded",
+      "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      "submission": "def largest_adjacent_sum(numbers):\n    \"\"\"\n    Finds the largest sum of non-adjacent numbers in a given list of integers.\n\n    Args:\n       numbers (list): A list of integers.\n\n    Returns:\n       int: The largest sum of non-adjacent numbers.\n    \"\"\"\n\n    if not numbers:\n        return 0\n\n    length = len(numbers)\n    if length == 1:\n        return numbers[0]\n\n    # Initialize two variables to track the maximum sum at each step\n    prev_max = max(0, numbers[0])\n    curr_max = max(prev_max, numbers[1])\n\n    # Iterate through the list starting from the third element\n    for i in range(2, length):\n        # Calculate the maximum sum up to the current element\n        temp = curr_max\n        curr_max = max(prev_max + numbers[i], curr_max)\n        prev_max = temp\n\n    return curr_max\n",
+      "grade": [
+        {
+          "name": "Big O",
+          "score": 2,
+          "inferredScore": null,
+          "assessment": "The student's solution for the Big O criterion is optimal and efficient. They employ a single loop and dynamic programming to achieve a time complexity of O(n) and constant space complexity, demonstrating a strong understanding of algorithmic efficiency."
+        },
+        {
+          "name": "Validity",
+          "score": 1,
+          "inferredScore": null,
+          "assessment": "The student's solution for the Validity criterion is valid, correctly handling edge cases and finding the largest sum of non-adjacent numbers. However, it does not handle repeated elements, which limits its ability to handle all cases."
+        },
+        {
+          "name": "Organization",
+          "score": 3,
+          "inferredScore": null,
+          "assessment": "The student has demonstrated a strong understanding of code organization. The functions and variables are well-named, and the code is easy to read and understand. However, additional comments could enhance clarity and improve maintainability."
+        },
+        {
+          "name": "Comments",
+          "score": 2,
+          "inferredScore": null,
+          "assessment": "The student's submission receives a level 2 for the Comments criterion as it includes a necessary docstring but lacks inline comments to explain complex sections of the code and provide further clarity on the algorithm."
+        },
+        {
+          "name": "Documentation",
+          "score": 2,
+          "inferredScore": null,
+          "assessment": "The student's documentation level for the `largest_adjacent_sum` function is at a high level. The function is well-documented with a clear and descriptive docstring that explains the purpose, arguments, and return value. However, they did not document other functions within their code, which prevented them from achieving a higher level."
+        },
+        {
+          "name": "Naming",
+          "score": 1,
+          "inferredScore": null,
+          "assessment": "The student's submission adequately meets the Naming criterion by having clear and meaningful names for functions and variables. However, there is room for improvement in terms of consistency with Python's naming conventions, which would have resulted in a higher level achievement in the criterion."
+        }
+      ]
+    },
+    {
+      "name": "Jordan Grimsley",
+      "email": "J0r_de_man13@example.com",
+      "submittedOn": "04/26/2023 - 5:56pm",
+      "status": "Graded",
+      "image": "",
+      "submission": "def max_sum_non_adjacent(nums):\n    # Handle edge cases\n    if len(nums) == 0:\n        return 0\n    elif len(nums) == 1:\n        return max(nums[0], 0)\n\n    prev_prev_sum = max(nums[0], 0)\n    prev_sum = max(nums[0], nums[1], 0)\n\n    for i in range(2, len(nums)):\n        current_sum = max(prev_sum, prev_prev_sum + nums[i], 0)\n        prev_prev_sum = prev_sum\n        prev_sum = current_sum\n\n    return prev_sum\nprint(max_sum_non_adjacent([2, 4, 6, 2, 5]))  # Output: 13\nprint(max_sum_non_adjacent([5, 1, 1, 5]))     # Output: 10\nprint(max_sum_non_adjacent([-1, -2, -3, -4])) # Output: 0\nprint(max_sum_non_adjacent([1, 2, 3, 4, 5]))  # Output: 9\n",
+      "grade": [
+        {
+          "name": "Big O",
+          "score": 1,
+          "inferredScore": 3,
+          "assessment": "The students solution provided is O(N) time and constant space complexity."
+        },
+        {
+          "name": "Validity",
+          "score": 1,
+          "inferredScore": null,
+          "assessment": "The assignment wanted the result of the largest possible sum. Returning zero when nothing in the list can sum to zero is not following specifications. If all possible sums are negative, the smallest negative sum should be output."
+        },
+        {
+          "name": "Organization",
+          "score": 2,
+          "inferredScore": null,
+          "assessment": "The code is organized and concise. Most functions and variables are well named."
+        },
+        {
+          "name": "Comments",
+          "score": 2,
+          "inferredScore": null,
+          "assessment": "The code is very readable, however a comment should exist explaining the algorithm. This could also be included in a doc string, which would remove the need for inline comments (when the code is this simple), however no doc string was present."
+        },
+        {
+          "name": "Documentation",
+          "score": 0,
+          "inferredScore": null,
+          "assessment": "No functions are documented."
+        },
+        {
+          "name": "Naming",
+          "score": 2,
+          "inferredScore": null,
+          "assessment": "All functions and variables are well named."
+        }
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "name": "Big O",
+      "levels": [
+        { "score": 3, "description": "The solution provided is optimal." },
+        {
+          "score": 2,
+          "description": "The student's solution is slightly inefficient, but better than a naive solution."
+        },
+        {
+          "score": 1,
+          "description": "The student's solution is inefficient and does not scale with larger inputs. The algorithm employed is O(n^2)."
+        },
+        {
+          "score": 0,
+          "description": "Student's solution is not efficient and does not scale with larger inputs. The algorithm employed is worse than O(n^2)."
+        }
+      ]
+    },
+    {
+      "name": "Validity",
+      "levels": [
+        {
+          "score": 2,
+          "description": "The student's solution is valid and handles all cases."
+        },
+        {
+          "score": 1,
+          "description": "The student's solution is valid, may not handle all cases."
+        },
+        {
+          "score": 0,
+          "description": "The student's solution is not valid. All outputs are incorrect."
+        }
+      ]
+    },
+    {
+      "name": "Organization",
+      "levels": [
+        {
+          "score": 3,
+          "description": "The code is well organized. Functions and variables are well named. The code is easy to read and understand."
+        },
+        {
+          "score": 2,
+          "description": "The code is organized. Most functions and variables are well named. The code may be difficult to read and understand at times."
+        },
+        {
+          "score": 1,
+          "description": "The code is poorly organized. Most functions and variables are poorly named. The code is difficult to read and understand."
+        },
+        {
+          "score": 0,
+          "description": "The code is disorganized. All functions and variables are poorly named. The code is impossible to read and understand."
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "levels": [
+        {
+          "score": 3,
+          "description": "The code is well commented. Comments are descriptive and concise. Comments are only used when necessary."
+        },
+        {
+          "score": 2,
+          "description": "Most code which warrants comments have them. May have some unnecessary comments."
+        },
+        {
+          "score": 1,
+          "description": "Commenting is poor. May be lacking when necessary, or may be excessive."
+        },
+        {
+          "score": 0,
+          "description": "The code is not commented, or extremely excessively commented."
+        }
+      ]
+    },
+    {
+      "name": "Documentation",
+      "levels": [
+        { "score": 2, "description": "All functions are documented." },
+        { "score": 1, "description": "Most functions are documented." },
+        { "score": 0, "description": "No functions are documented." }
+      ]
+    },
+    {
+      "name": "Naming",
+      "levels": [
+        {
+          "score": 2,
+          "description": "All functions and variables are well named."
+        },
+        {
+          "score": 1,
+          "description": "Most functions and variables are well named."
+        },
+        {
+          "score": 0,
+          "description": "No functions or variables are well named."
+        }
+      ]
+    }
+  ]
+}
